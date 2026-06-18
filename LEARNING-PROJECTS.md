@@ -407,6 +407,43 @@ P19,P23 ─► P33 ─► P35 (durable WAL + LSM storage)
 
 So the real working order for Stage 2 is **P52 → P53 → P54**, not "jump to Raft cold." Pull each prerequisite only when you reach its stage — don't front-load them all.
 
+---
+
+## Where the other ~92 projects go (capstones vs. standalone reps)
+
+The broker capstone uses ~18 projects. The remaining ~92 split cleanly into **4 more mini-capstones (37 projects)** and **standalone skill reps (55 projects)**. Net: ~55 of the 110 connect into 5 real systems; ~55 are independent reps you do on demand.
+
+### Bucket 2 — the 4 other mini-capstones
+
+Each is its own "build one system" spine, like the broker. `*` = shared with the broker capstone (build once, reuse).
+
+| Mini-capstone | What you end up with | Build sequence (prereqs → core) | Home track(s) |
+|---|---|---|---|
+| **Mini-database** (storage engine) | a tiny SQL database | P19\* + P23\* + P21 → P20 → P33\* → P34 → P35\* → P39 → P36 → P40 → P37 → P38 → P41 → P42 | 4 (+3) |
+| **Mini-Dynamo** (distributed KV) | an eventually-consistent KV store | P31 → P52\* → P50 → P51 → P57 → P55 → P58 → P30 → P59 → P62 → P63 → **P60** | 6 (+5, 7) |
+| **Event-driven platform** (order system) | sagas + streaming on the broker | (needs P69\*) → P70 → P74 → P75 → P72 → P73 → P71 → P76 → P77 | 8 (+9) |
+| **Observability platform** | a monitoring/reliability stack | P86\* → P87\* → P88 → P89\* → P90\* → P91 → P92 | 10 |
+| **AI/RAG system** | retrieval chatbot + ops | `RAG-MINI-PROJECT-JAVA.md` → P106 → P107 → P108 → P109 → P110 | 13 |
+
+> Pick **one** mini-capstone matching your weakest area on top of the broker. Mini-database closes "the DB is a black box"; mini-Dynamo closes "distributed systems are hand-wavy"; event-driven closes "I copy Kafka/saga patterns I don't grasp."
+
+### Bucket 3 — standalone skill reps (55 projects, no home system)
+
+These don't belong to any capstone. They're independent reps: do them as **warm-ups**, **prerequisites**, or **gap-fills** — not as a sequence.
+
+| Category | Projects | How to use |
+|---|---|---|
+| **Foundations reps** | P1, P2, P4, P5, P6, P7, P8 | Warm-ups. Build once to demystify internals, then move on. |
+| **Concurrency reps** | P9, P10, P11, P12, P13, P14, P15, P16, P17 | Feed *into* the capstones; do as prereqs or to fix a specific fear. |
+| **Data-structure reps** | P22, P24, P25, P26, P27, P28, P29, P32 | Pure DSA/interview prep. Cherry-pick what shows up in coding rounds. |
+| **Networking reps** | P45, P46, P47, P48, P49 | Standalone. P48 (connection pool) is high-value — it's HikariCP's internals. |
+| **Distributed odds** | P56 (2PC), P61 (Chandy-Lamport) | Do for depth/curiosity; not on any system's critical path. |
+| **Caching reps** | P64, P65, P66, P67, P68 | Apply to any capstone's cache layer rather than building in isolation. |
+| **Architecture reps** | P78, P80, P81, P82, P83, P84, P85 | **High value for your senior/architect role** — patterns, not internals. |
+| **Security reps** | P94, P95, P96, P97, P98 | Do the ones relevant to your work (OAuth/PKCE, mTLS, envelope encryption). |
+| **Performance reps** | P99, P100, P101, P102, P103, P104, P105 | **APPLY to your capstone** (profile/optimize it) — don't build separately. |
+
+**The mental model:** not "110 projects to finish" but **"5 systems + ~55 skill reps."** Do the broker + 1–2 mini-capstones (your weak areas) + cherry-picked reps as prerequisites → that's the ~40 the cadence table recommends, and they're *connected*, not orphaned.
 
 ---
 
