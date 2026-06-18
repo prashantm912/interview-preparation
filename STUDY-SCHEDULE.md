@@ -10,6 +10,11 @@
 
 **Total:** ~56–64 hours, ~1.5 hrs/day. **Pairs with 3–4 lunch-break slots for system design sketches.**
 
+> **Companion docs:**
+> - `RAG-MINI-PROJECT-JAVA.md` — the Week 5 AI/ML build, in Java + Spring Boot + LangChain4j (use this; the Python version is `RAG-MINI-PROJECT.md`).
+> - `HANDS-ON-PROJECTS.md` — Java build projects for system design, DSA, and architecture, with a week-by-week integration table. Pick ~5–6 weighted to your gaps and slot them into the weeks below.
+> - `BICEP-INTERVIEW-GUIDE.md` — closes your IaC gap.
+
 ---
 
 ## Week 1: System Design Foundations + Stack Review (10–12 hrs)
