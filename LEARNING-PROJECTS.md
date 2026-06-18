@@ -385,4 +385,49 @@ If you can do all four, it's yours for life — and any interview question on it
 
 ---
 
+## Appendix — Papers & explainers for the hard projects
+
+**You do NOT need papers for most of these projects.** ~95 of the 110 (HashMap, thread pool, B+tree, LRU cache, JWT, connection pool, …) you can build from first principles or a good blog post — no paper required.
+
+But **~15 projects encode non-obvious math or protocol rules you cannot guess** — for those, read the source. Each row below gives the canonical paper *and* the best free explainer (start with the explainer; reach for the paper when you're stuck on a detail). Search the title if a link rots.
+
+### Distributed systems (Track 6) — the must-reads
+
+| Project | Paper | Free explainer (start here) |
+|---|---|---|
+| **P54 Raft** | "In Search of an Understandable Consensus Algorithm" — Ongaro & Ousterhout, 2014 · https://raft.github.io/raft.pdf | Visual: https://raft.github.io · "The Secret Lives of Data" interactive: https://thesecretlivesofdata.com/raft/ |
+| **P60 mini-Dynamo** | "Dynamo: Amazon's Highly Available Key-value Store" — DeCandia et al., 2007 · https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf | "Dynamo, Five Years Later" + most distributed-systems courses cover it |
+| **P52 Lamport/vector clocks** | "Time, Clocks, and the Ordering of Events" — Lamport, 1978 · https://lamport.azurewebsites.net/pubs/time-clocks.pdf | https://martinfowler.com/articles/patterns-of-distributed-systems/ (Lamport Clock, Hybrid Clock) |
+| **P55 fencing tokens** | — (no single paper) | Martin Kleppmann, "How to do distributed locking" · https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html |
+| **P58 CRDTs** | "Conflict-free Replicated Data Types" — Shapiro et al., 2011 · https://hal.inria.fr/inria-00609399/document | https://crdt.tech (curated) · https://jakelazaroff.com/words/an-interactive-intro-to-crdts/ |
+| **P61 Chandy-Lamport** | "Distributed Snapshots: Determining Global States" — Chandy & Lamport, 1985 · https://lamport.azurewebsites.net/pubs/chandy.pdf | Flink docs on checkpointing (same algorithm, applied) |
+| **P51 phi-accrual detector** | "The φ Accrual Failure Detector" — Hayashibara et al., 2004 · https://citeseerx.ist.psu.edu/doc/10.1.1.80.7427 | Akka / Cassandra failure-detector source + docs |
+
+### Data structures & storage (Tracks 3, 4) — the math-heavy ones
+
+| Project | Paper | Free explainer (start here) |
+|---|---|---|
+| **P24 HyperLogLog** | "HyperLogLog: analysis of a near-optimal cardinality estimation algorithm" — Flajolet et al., 2007 · https://algo.inria.fr/flajolet/Publications/FlFuGaMe07.pdf | Redis antirez post · https://antirez.com/news/75 |
+| **P25 Count-Min Sketch** | "An Improved Data Stream Summary: the Count-Min Sketch" — Cormode & Muthukrishnan, 2005 · http://dimacs.rutgers.edu/~graham/pubs/papers/cm-full.pdf | https://florian.github.io/count-min-sketch/ |
+| **P21/P35 LSM tree** | "Bigtable" — Chang et al., 2006 · https://research.google/pubs/pub27898/ · original LSM: O'Neil et al., 1996 | https://www.cs.umb.edu/~poneil/lsmtree.pdf · RocksDB wiki (very practical) |
+| **P19 skip list** | "Skip Lists: A Probabilistic Alternative to Balanced Trees" — Pugh, 1990 · https://15721.courses.cs.cmu.edu/spring2018/papers/08-oltpindexes1/pugh-skiplists-cacm1990.pdf | Redis sorted-set source is a clean reference impl |
+| **P36 MVCC** | — (read Postgres internals, not one paper) | "PostgreSQL Internals" book (free, interdb.jp) ch. on concurrency · https://www.interdb.jp/pg/ |
+
+### Reliability & AI (Tracks 10, 13)
+
+| Project | Source | Free explainer |
+|---|---|---|
+| **P86 t-digest percentiles** | "Computing Extremely Accurate Quantiles Using t-Digests" — Dunning · https://github.com/tdunning/t-digest/blob/main/docs/t-digest-paper/histo.pdf | t-digest README |
+| **P90 adaptive concurrency** | — | Netflix "Performance Under Load" · https://netflixtechblog.medium.com/performance-under-load-3e6fa9a60581 + concurrency-limits repo |
+| **P106 HNSW vector search** | "Efficient and robust approximate nearest neighbor search using HNSW graphs" — Malkov & Yashunin, 2016 · https://arxiv.org/abs/1603.09320 | Pinecone/Weaviate HNSW explainer blogs |
+
+### Two books worth more than any single paper
+
+- **"Designing Data-Intensive Applications"** — Martin Kleppmann. Covers the *why* behind Tracks 4, 6, 7, 8 better than the papers. If you read one thing, read this.
+- **"Patterns of Distributed Systems"** — Unmesh Joshi (free online: https://martinfowler.com/articles/patterns-of-distributed-systems/). Maps almost 1:1 to Track 6 projects.
+
+**Rule of thumb:** explainer first to get the shape, paper second for the exact rules you must implement, then build. Don't read all 15 up front — pull each one only when you reach that project.
+
+---
+
 **Read less, build more. These 110 projects are the 15 years of "internals" you skipped — pick your tracks and start.**
