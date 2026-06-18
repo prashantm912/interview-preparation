@@ -447,6 +447,189 @@ These don't belong to any capstone. They're independent reps: do them as **warm-
 
 ---
 
+## Master sequence — all 110 in recommended order
+
+One end-to-end order: the 6 capstones in sequence (prerequisites woven in where you need them), then the standalone reps in a learning progression. The `#` is the global step; shared projects appear only at their first occurrence (reuse noted in each later capstone's header).
+
+> **If your fundamentals are rusty:** pull **Phase 7 (Foundations, #56–62)** and **Phase 8 (Concurrency, #63–71)** to the front as a "Phase 0" warm-up — gentler on-ramps than starting cold at P69. Otherwise follow as-is. And remember: you don't do all 110 — do the broker + 1–2 mini-capstones for your weak areas, pulling reps in as prerequisites.
+
+### Capstone 1 — Message broker (the spine)
+| # | Proj | Title | Effort | Role |
+|---|---|---|---|---|
+| 1 | P3 | Thread pool (ExecutorService) | 🟡 | prereq |
+| 2 | P69 | Mini message broker (Kafka-lite) | 🔴 | **core** |
+| 3 | P52 | Lamport + vector clocks | 🟡 | prereq (Raft) |
+| 4 | P53 | Leader election (Bully → Raft-style) | 🟡 | prereq (Raft) |
+| 5 | P54 | Raft consensus | 🔴 | **core** |
+| 6 | P19 | Skip list | 🟡 | prereq (LSM memtable) |
+| 7 | P23 | Bloom filter | 🟢 | prereq (SSTable) |
+| 8 | P33 | KV store with WAL | 🟡 | **core** |
+| 9 | P35 | LSM-based KV store | 🔴 | **core** |
+| 10 | P43 | HTTP/1.1 server from sockets | 🟡 | prereq (NIO) |
+| 11 | P44 | NIO reactor server | 🟠 | **core** |
+| 12 | P18 | Semaphore rate limiter & bulkhead | 🟢 | prereq (resilience) |
+| 13 | P89 | Circuit breaker + bulkhead + retry | 🟡 | **core** |
+| 14 | P90 | Adaptive load shedding | 🟠 | **core** |
+| 15 | P86 | Metrics library (t-digest) | 🟡 | **core** |
+| 16 | P87 | Distributed tracing | 🟠 | **core** |
+| 17 | P93 | JWT sign/verify | 🟡 | prereq (gateway) |
+| 18 | P79 | API gateway | 🟠 | **core** |
+| — | — | *Deploy to Azure (Bicep + GitHub Actions)* | — | see `BICEP-INTERVIEW-GUIDE.md` |
+
+### Capstone 2 — Mini-database *(reuses P19, P23, P33, P35)*
+| # | Proj | Title | Effort | Role |
+|---|---|---|---|---|
+| 19 | P20 | B-tree / B+tree (DS) | 🟠 | prereq |
+| 20 | P21 | LSM tree + SSTables (DS) | 🟠 | reinforces P35 |
+| 21 | P34 | On-disk B+tree index | 🟠 | **core** |
+| 22 | P39 | Buffer pool / page cache | 🟡 | **core** |
+| 23 | P36 | MVCC + snapshot isolation | 🟠 | **core** |
+| 24 | P40 | Two-phase locking + deadlock detection | 🟡 | **core** |
+| 25 | P37 | SQL parser + executor | 🟠 | **core** |
+| 26 | P38 | Cost-based query planner | 🟠 | **core** |
+| 27 | P41 | Primary-replica log shipping | 🟡 | **core** |
+| 28 | P42 | Columnar store + encoding | 🟡 | **core** |
+
+### Capstone 3 — Mini-Dynamo (distributed KV) *(reuses P52)*
+| # | Proj | Title | Effort | Role |
+|---|---|---|---|---|
+| 29 | P31 | Consistent hashing ring | 🟡 | **core** (partitioning) |
+| 30 | P50 | Gossip / epidemic membership | 🟠 | prereq (membership) |
+| 31 | P51 | Phi-accrual failure detector | 🟡 | prereq (membership) |
+| 32 | P57 | Quorum reads/writes | 🟡 | **core** |
+| 33 | P55 | Distributed lock with fencing tokens | 🟡 | **core** |
+| 34 | P58 | CRDTs | 🟠 | **core** (conflict merge) |
+| 35 | P30 | Merkle tree | 🟡 | prereq (anti-entropy) |
+| 36 | P59 | Anti-entropy with Merkle trees | 🟡 | **core** |
+| 37 | P62 | Sharded counter | 🟢 | **core** |
+| 38 | P63 | LRU/LFU/ARC/2Q caches | 🟡 | **core** (cache layer) |
+| 39 | P60 | Eventually consistent KV (integration) | 🟠 | **CAPSTONE** |
+
+### Capstone 4 — Event-driven platform *(needs P69 from Capstone 1)*
+| # | Proj | Title | Effort | Role |
+|---|---|---|---|---|
+| 40 | P70 | Exactly-once via idempotent producer | 🟡 | **core** |
+| 41 | P74 | DLQ + retry with backoff | 🟢 | **core** |
+| 42 | P75 | Transactional outbox | 🟡 | **core** |
+| 43 | P72 | Change data capture (CDC) | 🟡 | **core** |
+| 44 | P73 | Backpressure-aware pipeline | 🟡 | **core** |
+| 45 | P71 | Stream processor with windows | 🟠 | **core** |
+| 46 | P76 | Event sourcing + CQRS | 🟠 | **core** |
+| 47 | P77 | Saga (choreography vs orchestration) | 🟠 | **CAPSTONE** |
+
+### Capstone 5 — Observability platform *(reuses P86, P87, P89, P90)*
+| # | Proj | Title | Effort | Role |
+|---|---|---|---|---|
+| 48 | P88 | Structured logging + correlation IDs | 🟢 | **core** |
+| 49 | P91 | Chaos-injection tool | 🟡 | **core** |
+| 50 | P92 | SLO + error-budget alerting | 🟢 | **CAPSTONE** |
+
+### Capstone 6 — AI/RAG system *(anchor: `RAG-MINI-PROJECT-JAVA.md`)*
+| # | Proj | Title | Effort | Role |
+|---|---|---|---|---|
+| 51 | P106 | Vector similarity search (HNSW) | 🟡 | **core** |
+| 52 | P107 | Embedding cache + semantic dedup | 🟢 | **core** |
+| 53 | P108 | Semantic router | 🟢 | **core** |
+| 54 | P109 | LLM cost-control gateway | 🟡 | **core** |
+| 55 | P110 | Mini feature store | 🟡 | **CAPSTONE** |
+
+### Remaining — standalone reps (recommended progression)
+
+**Phase 7 — Foundations reps**
+| # | Proj | Title | Effort |
+|---|---|---|---|
+| 56 | P1 | HashMap | 🟢 |
+| 57 | P2 | Dynamic array (ArrayList) | 🟢 |
+| 58 | P4 | Memory allocator / object pool | 🟡 |
+| 59 | P5 | Stack-machine bytecode interpreter | 🟡 |
+| 60 | P6 | GC simulator | 🟠 |
+| 61 | P7 | Regex engine (Thompson NFA) | 🟠 |
+| 62 | P8 | JSON parser | 🟢 |
+
+**Phase 8 — Concurrency reps**
+| # | Proj | Title | Effort |
+|---|---|---|---|
+| 63 | P9 | Producer-consumer (three ways) | 🟡 |
+| 64 | P10 | ReentrantLock with CAS | 🟡 |
+| 65 | P11 | Read-write lock | 🟡 |
+| 66 | P12 | Lock-free stack & queue | 🟠 |
+| 67 | P13 | Striped / sharded lock cache | 🟢 |
+| 68 | P14 | Actor model | 🟠 |
+| 69 | P15 | False sharing demo + fix | 🟢 |
+| 70 | P16 | Fork-join parallel merge sort | 🟡 |
+| 71 | P17 | Scatter-gather CompletableFuture | 🟢 |
+
+**Phase 9 — Data-structure reps**
+| # | Proj | Title | Effort |
+|---|---|---|---|
+| 72 | P22 | Trie + radix tree | 🟡 |
+| 73 | P24 | HyperLogLog | 🟡 |
+| 74 | P25 | Count-min sketch | 🟡 |
+| 75 | P26 | Fenwick + segment tree | 🟡 |
+| 76 | P27 | Red-black / AVL tree | 🟠 |
+| 77 | P28 | Binary + Fibonacci heap | 🟡 |
+| 78 | P29 | Union-Find | 🟢 |
+| 79 | P32 | Rope | 🟡 |
+
+**Phase 10 — Networking reps**
+| # | Proj | Title | Effort |
+|---|---|---|---|
+| 80 | P45 | WebSocket server | 🟡 |
+| 81 | P46 | Length-prefixed binary RPC | 🟠 |
+| 82 | P47 | Single-threaded event loop | 🟡 |
+| 83 | P48 | Connection pool (HikariCP internals) | 🟡 |
+| 84 | P49 | Varint + protobuf wire format | 🟢 |
+
+**Phase 11 — Distributed odds**
+| # | Proj | Title | Effort |
+|---|---|---|---|
+| 85 | P56 | Two-phase commit (2PC) | 🟡 |
+| 86 | P61 | Chandy-Lamport snapshot | 🟡 |
+
+**Phase 12 — Caching reps**
+| # | Proj | Title | Effort |
+|---|---|---|---|
+| 87 | P64 | Write-through / back / around | 🟢 |
+| 88 | P65 | Cache stampede protection | 🟢 |
+| 89 | P66 | Edge cache with stale-while-revalidate | 🟡 |
+| 90 | P67 | Content-addressable store | 🟡 |
+| 91 | P68 | Object store + erasure coding | 🟠 |
+
+**Phase 13 — Architecture reps** *(high value for your senior/architect role)*
+| # | Proj | Title | Effort |
+|---|---|---|---|
+| 92 | P78 | Hexagonal / ports-and-adapters | 🟡 |
+| 93 | P80 | Sidecar proxy | 🟠 |
+| 94 | P81 | Plugin architecture (SPI) | 🟡 |
+| 95 | P82 | Feature-flag system | 🟡 |
+| 96 | P83 | Workflow / state-machine engine | 🟠 |
+| 97 | P84 | Multi-tenancy | 🟡 |
+| 98 | P85 | Strangler-fig migration | 🟡 |
+
+**Phase 14 — Security reps**
+| # | Proj | Title | Effort |
+|---|---|---|---|
+| 99 | P94 | OAuth2 auth-code + PKCE | 🟠 |
+| 100 | P95 | Password storage (bcrypt/argon2) | 🟢 |
+| 101 | P96 | TLS/mTLS handshake | 🟡 |
+| 102 | P97 | AES-GCM + envelope encryption | 🟡 |
+| 103 | P98 | HMAC request signing | 🟢 |
+
+**Phase 15 — Performance reps** *(apply these TO your capstone, don't build separately)*
+| # | Proj | Title | Effort |
+|---|---|---|---|
+| 104 | P99 | JMH microbenchmark suite | 🟢 |
+| 105 | P100 | Allocation elimination | 🟡 |
+| 106 | P101 | Off-heap storage | 🟡 |
+| 107 | P102 | Zero-copy file transfer | 🟢 |
+| 108 | P103 | Batching & pipelining | 🟢 |
+| 109 | P104 | Profile + fix slow service | 🟡 |
+| 110 | P105 | GC tuning experiment | 🟡 |
+
+*All 110 appear exactly once: #1–55 are capstone-connected (55 projects across 6 systems), #56–110 are standalone reps (55). Reused projects are noted in each capstone's header, not repeated.*
+
+---
+
 ## Suggested cadence (realistic for a working professional)
 
 | Pace | Per week | Finish ~core 40 projects | Finish all 110 |
