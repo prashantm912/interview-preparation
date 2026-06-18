@@ -359,6 +359,55 @@ The deepest learning comes from carrying **one system through many tracks** inst
 
 When you've done that, you won't be "a developer who used Kafka" — you'll be an engineer who **rebuilt Kafka's core ideas** and can reason about any distributed system from first principles. That is the gap you described, closed.
 
+### Build order & prerequisites (read this if the spine feels orderless)
+
+**The project numbers (P1–P110) are grouped by TRACK/topic, not by build order.** A number tells you the subject area, not when to build it. The capstone deliberately **hops across tracks** in a build sequence — that's why you don't see a linear order inside the tracks. Two views of the same projects:
+- **Track view** = a menu by subject (good for depth-first on a weak area).
+- **Build view (below)** = a recipe pulling ingredients from different shelves in cooking order.
+
+Each capstone stage also has **smaller prerequisite projects** — do those first, then the stage:
+
+| Stage | Build (in order) | From track | Defined at | Why the prereqs first |
+|---|---|---|---|---|
+| 1 | **P3** → **P69** | 2 (concurrency), 8 (messaging) | P3, P69 | broker needs background workers + a task queue before topics/partitions |
+| 2 | **P52** → **P53** → **P54** | 6 (distributed systems) | P52, P53, P54 | clocks give ordering intuition; Bully election warms up for Raft's election; then full Raft |
+| 3 | **P19** + **P23** → **P33** → **P35** | 3 (data structures), 4 (DB internals) | P19, P23, P33, P35 | the LSM memtable *is* a skip list; each SSTable *needs* a Bloom filter; WAL is the durability base |
+| 4 | **P43** → **P44** | 5 (networking) | P43, P44 | learn raw socket I/O before non-blocking NIO |
+| 5 | **P18** → **P89** → **P90** | 2 (concurrency), 10 (reliability) | P18, P89, P90 | semaphore/bulkhead is the building block for breaker + load shedding |
+| 6 | **P86** → **P87** | 10 (observability) | P86, P87 | metrics before tracing (simpler first) |
+| 7 | **P93** + **P18** → **P79** | 11 (security), 9 (architecture) | P93, P79 | gateway = auth (JWT) + rate limit (semaphore) + routing combined |
+| 8 | Bicep + GitHub Actions deploy | DevOps | `BICEP-INTERVIEW-GUIDE.md` | ship the finished system to Azure |
+
+**Dependency at a glance:**
+
+```
+P3 ─► P69 (broker core)
+            │
+            ▼
+P52 ─► P53 ─► P54 (Raft: crash-safe metadata)
+                  │
+                  ▼
+P19,P23 ─► P33 ─► P35 (durable WAL + LSM storage)
+                      │
+                      ▼
+            P43 ─► P44 (NIO reactor: scale connections)
+                      │
+                      ▼
+            P18 ─► P89 ─► P90 (resilience under overload)
+                              │
+                              ▼
+                    P86 ─► P87 (metrics + tracing)
+                              │
+                              ▼
+            P93 + P18 ─► P79 (API gateway front door)
+                              │
+                              ▼
+                    Bicep + GitHub Actions ─► Azure
+```
+
+So the real working order for Stage 2 is **P52 → P53 → P54**, not "jump to Raft cold." Pull each prerequisite only when you reach its stage — don't front-load them all.
+
+
 ---
 
 ## Suggested cadence (realistic for a working professional)
