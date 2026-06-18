@@ -118,20 +118,61 @@ Aha: *bulkheading — one slow dependency shouldn't sink the whole service.*
 
 ## Track 3 — Data Structures From Scratch (the ones behind real systems)
 
-**P19 · Skip list** 🟡 — probabilistic balancing. *Used in Redis sorted sets.* Aha: *randomized O(log n) without rebalancing rotations.*
-**P20 · B-tree / B+tree** 🟠 — disk-friendly fan-out. *The structure behind every SQL index.* Aha: *why databases use B+trees, not binary trees — disk pages, not RAM nodes.*
-**P21 · LSM tree + SSTables** 🟠 — write-optimized storage. *RocksDB/Cassandra.* Aha: *trade reads for writes; compaction is the hidden cost.*
-**P22 · Trie + radix/Patricia tree** 🟡 — prefix search, IP routing tables. Aha: *why autocomplete and routers love tries.*
-**P23 · Bloom filter + counting Bloom** 🟢 — probabilistic membership. Aha: *"definitely not / maybe yes" — and how false-positive rate trades off with bits.*
-**P24 · HyperLogLog** 🟡 — cardinality estimation. Aha: *the math that lets `COUNT DISTINCT` over billions use ~1.5KB.*
-**P25 · Count-Min Sketch** 🟡 — stream frequency estimation. Aha: *approximate heavy-hitters in fixed memory.*
-**P26 · Fenwick + segment tree** 🟡 — range queries/updates in O(log n). Aha: *prefix-sum tricks that turn O(n) scans into O(log n).*
-**P27 · Red-black or AVL tree** 🟠 — self-balancing. *Behind `TreeMap`.* Aha: *what rotations buy you and why RB trees beat AVL for write-heavy.*
-**P28 · Binary + Fibonacci heap** 🟡 — priority queues; powers Dijkstra. Aha: *why decrease-key matters for graph algorithms.*
-**P29 · Union-Find with path compression** 🟢 — near-O(1) connectivity. Aha: *the almost-constant inverse-Ackermann magic.*
-**P30 · Merkle tree** 🟡 — *git, blockchains, Dynamo anti-entropy.* Aha: *how you diff two huge datasets by exchanging a few hashes.*
-**P31 · Consistent hashing ring + virtual nodes** 🟡 — *Dynamo, every sharded cache.* Aha: *why modulo-N hashing is catastrophic when N changes, and how vnodes balance load.*
-**P32 · Rope (text-editor structure)** 🟡 — O(log n) insert in huge strings. Aha: *how editors handle million-line files without copying.*
+**P19 · Skip list** 🟡
+probabilistic balancing. *Used in Redis sorted sets.*
+Aha: *randomized O(log n) without rebalancing rotations.*
+
+**P20 · B-tree / B+tree** 🟠
+disk-friendly fan-out. *The structure behind every SQL index.*
+Aha: *why databases use B+trees, not binary trees — disk pages, not RAM nodes.*
+
+**P21 · LSM tree + SSTables** 🟠
+write-optimized storage. *RocksDB/Cassandra.*
+Aha: *trade reads for writes; compaction is the hidden cost.*
+
+**P22 · Trie + radix/Patricia tree** 🟡
+prefix search, IP routing tables.
+Aha: *why autocomplete and routers love tries.*
+
+**P23 · Bloom filter + counting Bloom** 🟢
+probabilistic membership.
+Aha: *"definitely not / maybe yes" — and how false-positive rate trades off with bits.*
+
+**P24 · HyperLogLog** 🟡
+cardinality estimation.
+Aha: *the math that lets `COUNT DISTINCT` over billions use ~1.5KB.*
+
+**P25 · Count-Min Sketch** 🟡
+stream frequency estimation.
+Aha: *approximate heavy-hitters in fixed memory.*
+
+**P26 · Fenwick + segment tree** 🟡
+range queries/updates in O(log n).
+Aha: *prefix-sum tricks that turn O(n) scans into O(log n).*
+
+**P27 · Red-black or AVL tree** 🟠
+self-balancing. *Behind `TreeMap`.*
+Aha: *what rotations buy you and why RB trees beat AVL for write-heavy.*
+
+**P28 · Binary + Fibonacci heap** 🟡
+priority queues; powers Dijkstra.
+Aha: *why decrease-key matters for graph algorithms.*
+
+**P29 · Union-Find with path compression** 🟢
+near-O(1) connectivity.
+Aha: *the almost-constant inverse-Ackermann magic.*
+
+**P30 · Merkle tree** 🟡
+*git, blockchains, Dynamo anti-entropy.*
+Aha: *how you diff two huge datasets by exchanging a few hashes.*
+
+**P31 · Consistent hashing ring + virtual nodes** 🟡
+*Dynamo, every sharded cache.*
+Aha: *why modulo-N hashing is catastrophic when N changes, and how vnodes balance load.*
+
+**P32 · Rope (text-editor structure)** 🟡
+O(log n) insert in huge strings.
+Aha: *how editors handle million-line files without copying.*
 
 ---
 
@@ -181,15 +222,41 @@ Aha: *why OLAP (analytics) wants columns and OLTP wants rows.*
 
 ## Track 5 — Networking & Protocols (what's under HTTP and Netty)
 
-**P43 · HTTP/1.1 server from raw TCP sockets** 🟡 — parse request line/headers, keep-alive, chunked. Aha: *HTTP is just text over TCP; frameworks hide a simple protocol.*
-**P44 · Reactor server with Java NIO Selector** 🟠 — one thread, many connections. Aha: *how Netty/Redis serve 100k connections without 100k threads.*
-**P45 · WebSocket server from scratch** 🟡 — handshake (upgrade) + frame parsing/masking. Aha: *what `@ServerEndpoint` does under the hood.*
-**P46 · Length-prefixed binary RPC framework** 🟠 — framing + serialization + request/response correlation. Aha: *why message framing exists (TCP is a byte stream, not messages).*
-**P47 · Single-threaded event loop** 🟡 — task queue + timers + I/O readiness. Aha: *the Node.js/Redis model and why "don't block the event loop."*
-**P48 · Connection pool from scratch** 🟡 — borrow/return, max size, validation, leak detection. Aha: *exactly what HikariCP manages and why pool exhaustion cascades.*
-**P49 · Varint + protobuf-style wire format** 🟢 — variable-length integers + tag-length-value. Aha: *how Protobuf/Kafka pack bytes efficiently.*
-**P50 · Gossip / epidemic membership protocol** 🟠 — nodes randomly exchange state. Aha: *how clusters track membership without a central registry (Cassandra/Serf).*
-**P51 · Phi-accrual failure detector** 🟡 — adaptive "is it dead?" from heartbeat history. Aha: *why fixed timeouts are wrong and how Cassandra/Akka decide a node is down.*
+**P43 · HTTP/1.1 server from raw TCP sockets** 🟡
+parse request line/headers, keep-alive, chunked.
+Aha: *HTTP is just text over TCP; frameworks hide a simple protocol.*
+
+**P44 · Reactor server with Java NIO Selector** 🟠
+one thread, many connections.
+Aha: *how Netty/Redis serve 100k connections without 100k threads.*
+
+**P45 · WebSocket server from scratch** 🟡
+handshake (upgrade) + frame parsing/masking.
+Aha: *what `@ServerEndpoint` does under the hood.*
+
+**P46 · Length-prefixed binary RPC framework** 🟠
+framing + serialization + request/response correlation.
+Aha: *why message framing exists (TCP is a byte stream, not messages).*
+
+**P47 · Single-threaded event loop** 🟡
+task queue + timers + I/O readiness.
+Aha: *the Node.js/Redis model and why "don't block the event loop."*
+
+**P48 · Connection pool from scratch** 🟡
+borrow/return, max size, validation, leak detection.
+Aha: *exactly what HikariCP manages and why pool exhaustion cascades.*
+
+**P49 · Varint + protobuf-style wire format** 🟢
+variable-length integers + tag-length-value.
+Aha: *how Protobuf/Kafka pack bytes efficiently.*
+
+**P50 · Gossip / epidemic membership protocol** 🟠
+nodes randomly exchange state.
+Aha: *how clusters track membership without a central registry (Cassandra/Serf).*
+
+**P51 · Phi-accrual failure detector** 🟡
+adaptive "is it dead?" from heartbeat history.
+Aha: *why fixed timeouts are wrong and how Cassandra/Akka decide a node is down.*
 
 ---
 
@@ -243,12 +310,29 @@ Aha: *write-hotspot sharding — the trick behind high-write counters/likes.*
 
 ## Track 7 — Caching & Storage Systems
 
-**P63 · LRU vs LFU vs ARC vs 2Q** 🟡 — implement all four; replay a real access trace; compare hit rates. Aha: *no single eviction policy wins; ARC adapts (used in ZFS).* 
-**P64 · Write-through / write-back / write-around** 🟢 — implement + measure read/write latency and consistency. Aha: *the durability-vs-speed knob behind every cache.*
-**P65 · Cache stampede protection (singleflight)** 🟢 — coalesce concurrent misses into one backend call. Aha: *how one expired hot key can take down your DB, and the fix.*
-**P66 · Edge cache with stale-while-revalidate** 🟡 — TTL + serve-stale + async refresh. Aha: *the CDN trick that hides origin latency.*
-**P67 · Content-addressable store (dedup by hash)** 🟡 — store blobs keyed by content hash. Aha: *how git/Dropbox/Docker layers dedup identical content for free.*
-**P68 · Object store with chunking + erasure coding basics** 🟠 — split, replicate vs Reed-Solomon. Aha: *why S3 uses erasure coding (durability without 3× storage cost).*
+**P63 · LRU vs LFU vs ARC vs 2Q** 🟡
+implement all four; replay a real access trace; compare hit rates.
+Aha: *no single eviction policy wins; ARC adapts (used in ZFS).*
+
+**P64 · Write-through / write-back / write-around** 🟢
+implement + measure read/write latency and consistency.
+Aha: *the durability-vs-speed knob behind every cache.*
+
+**P65 · Cache stampede protection (singleflight)** 🟢
+coalesce concurrent misses into one backend call.
+Aha: *how one expired hot key can take down your DB, and the fix.*
+
+**P66 · Edge cache with stale-while-revalidate** 🟡
+TTL + serve-stale + async refresh.
+Aha: *the CDN trick that hides origin latency.*
+
+**P67 · Content-addressable store (dedup by hash)** 🟡
+store blobs keyed by content hash.
+Aha: *how git/Dropbox/Docker layers dedup identical content for free.*
+
+**P68 · Object store with chunking + erasure coding basics** 🟠
+split, replicate vs Reed-Solomon.
+Aha: *why S3 uses erasure coding (durability without 3× storage cost).*
 
 ---
 
@@ -286,61 +370,161 @@ Aha: *the standard fix for "DB committed but the event was lost" dual-write prob
 
 ## Track 9 — Architecture & Design Patterns (build the judgment, not the buzzwords)
 
-**P76 · Event sourcing + CQRS ledger** 🟠 — append events, project read model, rebuild state by replay. Aha: *state is a fold over an event log; the audit trail is free.*
-**P77 · Saga: choreography vs orchestration** 🟠 — order/inventory/payment with compensations; build both. Aha: *the two ways to coordinate without 2PC, and their failure modes.*
-**P78 · Hexagonal / ports-and-adapters refactor** 🟡 — take a service, isolate domain from I/O. Aha: *why testable cores have no framework imports.*
-**P79 · API gateway** 🟠 — routing, auth, rate limit, request aggregation, response caching. Aha: *the cross-cutting concerns that don't belong in services.*
-**P80 · Sidecar proxy (mesh data-plane basics)** 🟠 — transparent retries/mTLS/metrics beside a service. Aha: *what Istio/Envoy's sidecar actually does for you.*
-**P81 · Plugin architecture (SPI + classloaders)** 🟡 — load implementations at runtime. Aha: *how extensible platforms (IDEs, Kafka Connect) isolate plugins.*
-**P82 · Feature-flag system with targeting + gradual rollout** 🟡 — % rollouts, user targeting, kill switch. Aha: *decouple deploy from release; the basis of safe continuous delivery.*
-**P83 · Workflow / state-machine engine** 🟠 — durable, resumable multi-step processes. Aha: *how Temporal/Camunda survive crashes mid-workflow.*
-**P84 · Multi-tenancy: row → schema → DB-per-tenant** 🟡 — implement all three isolation levels. Aha: *the isolation-vs-cost spectrum of SaaS data architecture.*
-**P85 · Strangler-fig monolith migration** 🟡 — route a slice to a new service behind a façade. Aha: *how to migrate a monolith without a big-bang rewrite.*
+**P76 · Event sourcing + CQRS ledger** 🟠
+append events, project read model, rebuild state by replay.
+Aha: *state is a fold over an event log; the audit trail is free.*
+
+**P77 · Saga: choreography vs orchestration** 🟠
+order/inventory/payment with compensations; build both.
+Aha: *the two ways to coordinate without 2PC, and their failure modes.*
+
+**P78 · Hexagonal / ports-and-adapters refactor** 🟡
+take a service, isolate domain from I/O.
+Aha: *why testable cores have no framework imports.*
+
+**P79 · API gateway** 🟠
+routing, auth, rate limit, request aggregation, response caching.
+Aha: *the cross-cutting concerns that don't belong in services.*
+
+**P80 · Sidecar proxy (mesh data-plane basics)** 🟠
+transparent retries/mTLS/metrics beside a service.
+Aha: *what Istio/Envoy's sidecar actually does for you.*
+
+**P81 · Plugin architecture (SPI + classloaders)** 🟡
+load implementations at runtime.
+Aha: *how extensible platforms (IDEs, Kafka Connect) isolate plugins.*
+
+**P82 · Feature-flag system with targeting + gradual rollout** 🟡
+% rollouts, user targeting, kill switch.
+Aha: *decouple deploy from release; the basis of safe continuous delivery.*
+
+**P83 · Workflow / state-machine engine** 🟠
+durable, resumable multi-step processes.
+Aha: *how Temporal/Camunda survive crashes mid-workflow.*
+
+**P84 · Multi-tenancy: row → schema → DB-per-tenant** 🟡
+implement all three isolation levels.
+Aha: *the isolation-vs-cost spectrum of SaaS data architecture.*
+
+**P85 · Strangler-fig monolith migration** 🟡
+route a slice to a new service behind a façade.
+Aha: *how to migrate a monolith without a big-bang rewrite.*
 
 ---
 
 ## Track 10 — Observability & Reliability (you run Prometheus; now understand it)
 
-**P86 · Metrics library (counter/gauge/histogram + t-digest percentiles)** 🟡 — compute p50/p99 in streaming fashion. Aha: *why averaging latencies lies, and how percentiles are actually computed cheaply.*
-**P87 · Distributed tracing from scratch** 🟠 — trace/span IDs, context propagation across services. Aha: *what OpenTelemetry injects into headers and why sampling matters.*
-**P88 · Structured logging + correlation IDs** 🟢 — propagate a request ID through async hops. Aha: *how you actually debug one request across 6 services.*
-**P89 · Circuit breaker + bulkhead + retry from scratch** 🟡 — then diff against Resilience4j. Aha: *the state machine (closed/open/half-open) you usually configure blindly.*
-**P90 · Adaptive load shedding / concurrency limits** 🟠 — AIMD or Little's-law-based limits (Netflix concurrency-limits). Aha: *how to stay up under overload by rejecting early instead of dying slowly.*
-**P91 · Chaos-injection tool + game day** 🟡 — inject latency/faults; run a failure drill. Aha: *resilience you didn't test doesn't exist.*
-**P92 · SLO + error-budget burn-rate alerting** 🟢 — define SLI/SLO, compute burn rate, alert. Aha: *the difference between "alert on every error" and "alert when the budget is burning."*
+**P86 · Metrics library (counter/gauge/histogram + t-digest percentiles)** 🟡
+compute p50/p99 in streaming fashion.
+Aha: *why averaging latencies lies, and how percentiles are actually computed cheaply.*
+
+**P87 · Distributed tracing from scratch** 🟠
+trace/span IDs, context propagation across services.
+Aha: *what OpenTelemetry injects into headers and why sampling matters.*
+
+**P88 · Structured logging + correlation IDs** 🟢
+propagate a request ID through async hops.
+Aha: *how you actually debug one request across 6 services.*
+
+**P89 · Circuit breaker + bulkhead + retry from scratch** 🟡
+then diff against Resilience4j.
+Aha: *the state machine (closed/open/half-open) you usually configure blindly.*
+
+**P90 · Adaptive load shedding / concurrency limits** 🟠
+AIMD or Little's-law-based limits (Netflix concurrency-limits).
+Aha: *how to stay up under overload by rejecting early instead of dying slowly.*
+
+**P91 · Chaos-injection tool + game day** 🟡
+inject latency/faults; run a failure drill.
+Aha: *resilience you didn't test doesn't exist.*
+
+**P92 · SLO + error-budget burn-rate alerting** 🟢
+define SLI/SLO, compute burn rate, alert.
+Aha: *the difference between "alert on every error" and "alert when the budget is burning."*
 
 ---
 
 ## Track 11 — Security Engineering (understand the bytes, not just the library)
 
-**P93 · JWT sign/verify (HS256 + RS256) from scratch** 🟡 — base64url, HMAC, RSA signatures. Aha: *a JWT is just `header.payload.signature` — and `alg:none` is why naive verifiers get owned.*
-**P94 · OAuth2 auth-code + PKCE flow end to end** 🟠 — auth server + client + resource server. Aha: *what actually happens in "Login with Google," and why PKCE exists for public clients.*
-**P95 · Password storage done right** 🟢 — bcrypt/argon2, per-user salt, pepper, work factor. Aha: *why salting beats fast hashes and why you never roll your own crypto primitives.*
-**P96 · TLS/mTLS handshake + cert-chain validation** 🟡 — establish mTLS between two services; validate the chain. Aha: *what a CA, cert chain, and "verify=true" really enforce.*
-**P97 · AES-GCM at rest + envelope encryption (KMS pattern)** 🟡 — data key encrypted by a master key. Aha: *how cloud KMS encrypts terabytes without ever exposing the master key.*
-**P98 · HMAC request signing (SigV4-style)** 🟢 — sign requests, verify, prevent replay with timestamps/nonces. Aha: *how AWS authenticates API calls without sending the secret.*
+**P93 · JWT sign/verify (HS256 + RS256) from scratch** 🟡
+base64url, HMAC, RSA signatures.
+Aha: *a JWT is just `header.payload.signature` — and `alg:none` is why naive verifiers get owned.*
+
+**P94 · OAuth2 auth-code + PKCE flow end to end** 🟠
+auth server + client + resource server.
+Aha: *what actually happens in "Login with Google," and why PKCE exists for public clients.*
+
+**P95 · Password storage done right** 🟢
+bcrypt/argon2, per-user salt, pepper, work factor.
+Aha: *why salting beats fast hashes and why you never roll your own crypto primitives.*
+
+**P96 · TLS/mTLS handshake + cert-chain validation** 🟡
+establish mTLS between two services; validate the chain.
+Aha: *what a CA, cert chain, and "verify=true" really enforce.*
+
+**P97 · AES-GCM at rest + envelope encryption (KMS pattern)** 🟡
+data key encrypted by a master key.
+Aha: *how cloud KMS encrypts terabytes without ever exposing the master key.*
+
+**P98 · HMAC request signing (SigV4-style)** 🟢
+sign requests, verify, prevent replay with timestamps/nonces.
+Aha: *how AWS authenticates API calls without sending the secret.*
 
 ---
 
 ## Track 12 — Performance Engineering (measure, don't guess)
 
-**P99 · JMH microbenchmark suite** 🟢 — benchmark a few of your earlier builds correctly. Aha: *why naive `System.nanoTime()` loops lie (JIT, warmup, dead-code elimination).*
-**P100 · Allocation elimination** 🟡 — object pooling + primitive collections; measure GC impact. Aha: *allocation rate, not heap size, drives GC pauses.*
-**P101 · Off-heap storage (ByteBuffer / Foreign Memory API)** 🟡 — store data outside the heap. Aha: *how caches like Chronicle/Ehcache avoid GC on huge datasets.*
-**P102 · Zero-copy file transfer (`transferTo`/sendfile)** 🟢 — serve a file with and without zero-copy; measure. Aha: *how Kafka achieves its throughput by avoiding user-space copies.*
-**P103 · Batching & pipelining** 🟢 — batch N requests into one round trip; measure latency/throughput trade-off. Aha: *why batching trades latency for throughput, and where the knee is.*
-**P104 · Profile + fix a slow service** 🟡 — async-profiler flame graphs on an earlier project; find and fix the hot path. Aha: *your intuition about "what's slow" is usually wrong; the profiler isn't.*
-**P105 · GC tuning experiment (G1 vs ZGC)** 🟡 — run a load test under both; compare pause distributions. Aha: *the throughput-vs-pause-time trade-off behind GC choice.*
+**P99 · JMH microbenchmark suite** 🟢
+benchmark a few of your earlier builds correctly.
+Aha: *why naive `System.nanoTime()` loops lie (JIT, warmup, dead-code elimination).*
+
+**P100 · Allocation elimination** 🟡
+object pooling + primitive collections; measure GC impact.
+Aha: *allocation rate, not heap size, drives GC pauses.*
+
+**P101 · Off-heap storage (ByteBuffer / Foreign Memory API)** 🟡
+store data outside the heap.
+Aha: *how caches like Chronicle/Ehcache avoid GC on huge datasets.*
+
+**P102 · Zero-copy file transfer (`transferTo`/sendfile)** 🟢
+serve a file with and without zero-copy; measure.
+Aha: *how Kafka achieves its throughput by avoiding user-space copies.*
+
+**P103 · Batching & pipelining** 🟢
+batch N requests into one round trip; measure latency/throughput trade-off.
+Aha: *why batching trades latency for throughput, and where the knee is.*
+
+**P104 · Profile + fix a slow service** 🟡
+async-profiler flame graphs on an earlier project; find and fix the hot path.
+Aha: *your intuition about "what's slow" is usually wrong; the profiler isn't.*
+
+**P105 · GC tuning experiment (G1 vs ZGC)** 🟡
+run a load test under both; compare pause distributions.
+Aha: *the throughput-vs-pause-time trade-off behind GC choice.*
 
 ---
 
 ## Track 13 — AI/ML Systems (extends your RAG project)
 
-**P106 · Vector similarity search from scratch** 🟡 — brute-force cosine, then HNSW graph basics. Aha: *what a vector DB does internally and why ANN beats exact search at scale.*
-**P107 · Embedding cache + semantic dedup** 🟢 — cache embeddings; collapse near-duplicate queries. Aha: *the cheapest way to cut LLM cost and latency.*
-**P108 · Semantic router / classifier over embeddings** 🟢 — route queries by nearest centroid. Aha: *how to pick a tool/prompt without another LLM call.*
-**P109 · LLM cost-control gateway** 🟡 — token budgets, rate limits, response cache, fallback model. Aha: *productionizing LLMs is mostly the same reliability/cost engineering as any API.*
-**P110 · Mini feature store (online/offline parity)** 🟡 — same features for training and serving. Aha: *training/serving skew — the #1 silent ML-system bug.*
+**P106 · Vector similarity search from scratch** 🟡
+brute-force cosine, then HNSW graph basics.
+Aha: *what a vector DB does internally and why ANN beats exact search at scale.*
+
+**P107 · Embedding cache + semantic dedup** 🟢
+cache embeddings; collapse near-duplicate queries.
+Aha: *the cheapest way to cut LLM cost and latency.*
+
+**P108 · Semantic router / classifier over embeddings** 🟢
+route queries by nearest centroid.
+Aha: *how to pick a tool/prompt without another LLM call.*
+
+**P109 · LLM cost-control gateway** 🟡
+token budgets, rate limits, response cache, fallback model.
+Aha: *productionizing LLMs is mostly the same reliability/cost engineering as any API.*
+
+**P110 · Mini feature store (online/offline parity)** 🟡
+same features for training and serving.
+Aha: *training/serving skew — the #1 silent ML-system bug.*
 
 ---
 
