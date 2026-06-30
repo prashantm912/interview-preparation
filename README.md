@@ -247,7 +247,9 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 
 ---
 
-## 🧭 Suggested Study Path
+## 🧭 Suggested Reading Order
+
+A first-pass **reading order through the folders** — what to open, in what sequence. For the *time-boxed schedule* (hours per week, how to interleave tracks, spaced repetition, mock cadence) follow the [12-week intensive / 6-month steady plans](00-getting-started/how-to-use.md). Complementary, not competing: this is *what to read*; that is *when and how*.
 
 ```
 Week 1–2 : 00-getting-started + your core language (Java) + DSA complexity/arrays/strings
@@ -258,7 +260,7 @@ Week 13–14: AI/ML for engineers (13-ai-ml)
 Ongoing  : Frontend / DevOps-cloud (to your role), behavioral, mock interviews
 ```
 
-See [the full study plans](00-getting-started/how-to-use.md) for 12-week intensive and 6-month steady tracks.
+The week labels above align with the 12-week intensive plan in [how-to-use.md](00-getting-started/how-to-use.md); AI/ML (weeks 13–14) extends it for AI-touching or senior+ roles. See that file for the full intensive and 6-month steady schedules, plus [study-resources.md](00-getting-started/study-resources.md) for which book/platform to use at each phase.
 
 ---
 

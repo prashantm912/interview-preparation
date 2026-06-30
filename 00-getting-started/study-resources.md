@@ -257,6 +257,8 @@ Feedback is the highest-leverage activity in prep. Schedule mocks early; do not 
 
 ## Sample Study Timelines
 
+> These sequence **which resource leads each phase** — they plug into the schedule in [how-to-use.md](how-to-use.md) (the 12-week intensive / 6-month steady plans); they don't replace it. A single-track row marks the *lead* resource for that phase, not single-tracking — you still **interleave tracks daily** per that schedule's core rule. The phases here mirror its Foundation → Fluency → Sharpening → Peak arc.
+
 ### 4-Week Sprint (you already have fundamentals)
 
 | Week | Focus | Primary Resources |

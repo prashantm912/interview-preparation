@@ -31,26 +31,37 @@ The guide is organized as numbered top-level folders so they sort naturally in a
 
 ```
 interview-preparation/
-├── README.md                      ← master index (start here)
-├── 00-getting-started/            ← THIS folder: orientation + study plans
-│   └── how-to-use.md              ← the file you're reading
-├── 01-cs-fundamentals/            ← Theory track
-├── 02-data-structures-algorithms/ ← DSA track (patterns + problem sets)
-├── 03-system-design/              ← System Design track
-├── 04-behavioral/                 ← Behavioral track (STAR stories)
-├── 05-languages-and-frameworks/   ← language-specific deep dives
-├── 06-mock-interviews/            ← question banks + self-eval rubrics
-└── 99-resources/                  ← books, courses, platforms, cheat sheets
+├── README.md                       ← master index (start here)
+├── 00-getting-started/             ← THIS folder: orientation + plans + tips + resources
+│   ├── how-to-use.md               ← the file you're reading (study plans)
+│   ├── interview-tips-by-level.md  ← what interviewers score at each level
+│   └── study-resources.md          ← curated books, courses, platforms
+├── 01-backend-java/                ← Java, JVM, Jakarta EE, Spring, Hibernate
+├── 02-microservices/               ← patterns, resilience, saga, service mesh
+├── 03-messaging/                   ← Kafka, RabbitMQ, ActiveMQ, Redis, EDA
+├── 04-apis-auth/                   ← REST, SOAP, GraphQL, OAuth2/OIDC, JWT, gateways
+├── 05-databases/                   ← SQL, Postgres, MySQL, Oracle, Mongo, indexing, sharding
+├── 06-frontend/                    ← HTML/CSS, JS, TS, Angular, React, Vue, state mgmt, security
+├── 07-devops-cloud/                ← Git, CI/CD, Docker, K8s, Terraform, AWS/Azure/GCP, observability
+├── 08-dsa/                         ← DSA track: solved Java problem sets by pattern
+├── 09-system-design/               ← System Design track: concepts + design-problems/ case studies
+├── 10-tools/                       ← Copilot/AI assistants, IntelliJ, HTML→PDF
+├── 11-additional-topics/           ← DevSecOps, cloud security, FinOps, compliance, modern arch
+├── 12-behavioral/                  ← Behavioral track: STAR, leadership, staff+ scope
+└── 13-ai-ml/                       ← AI/ML for engineers: LLMs, RAG, agents, MLOps, GenAI security
 ```
+
+**The four tracks map *across* these technology folders, not onto single folders.** Theory lives wherever the tech does (`01-backend-java/`, `05-databases/`, `03-messaging/`, `02-microservices/`, `04-apis-auth/`, `07-devops-cloud/`); **DSA** is `08-dsa/`; **System Design** is `09-system-design/` (+ `design-problems/`); **Behavioral** is `12-behavioral/`. Two areas sit outside the original four but show up in real loops — don't skip them for your role: `13-ai-ml/` (now expected at senior+) and `07-devops-cloud/`.
 
 **Navigation conventions used throughout the guide:**
 
 - Every document opens with a `[← Back to master index]` link so you can always jump home.
 - Topics are tagged with an **experience level** badge (see §3) so you can skim past or zoom into content that matches where you are.
-- Code examples are language-agnostic in the core tracks; language-specific notes live in `05-languages-and-frameworks/`.
-- Each DSA pattern page lists **representative problems** with difficulty so you can build a problem set without guessing.
+- Code examples default to **Java**; frontend topics (`06-frontend/`) use JS/TS, IaC topics use HCL/YAML, AI topics (`13-ai-ml/`) use Python.
+- Each `08-dsa/` file is a **solved problem set** grouped by pattern (full Java solutions + complexity), so you can build a problem set without guessing.
+- This `00-getting-started/` folder has three orientation docs: this file (study plans), [interview-tips-by-level.md](interview-tips-by-level.md) (what's scored per level), and [study-resources.md](study-resources.md) (books, courses, platforms).
 
-> **Concrete example:** Preparing for a backend role and weak on databases? Open `01-cs-fundamentals/databases.md` for theory, then `03-system-design/data-storage.md` for applied tradeoffs (SQL vs. NoSQL, sharding, replication), then drill the relevant problems in `02-data-structures-algorithms/`. That single thread crosses three folders — the cross-links connect them.
+> **Concrete example:** Preparing for a backend role and weak on databases? Open `05-databases/sql-fundamentals.md` (and `query-optimization-indexing.md`) for theory, then `09-system-design/data-layer.md` for applied tradeoffs (SQL vs. NoSQL, sharding, replication), then drill the relevant problems in `08-dsa/`. That single thread crosses three folders — the cross-links connect them.
 
 ---
 
@@ -60,10 +71,12 @@ Content is tagged with one of four levels. They are **cumulative** — higher le
 
 | Level | Badge | Typical title | Years | Emphasis shift |
 |-------|-------|---------------|-------|----------------|
-| **L1 — Foundational** | 🟢 | Intern / New Grad / Junior (SWE I) | 0–2 | Heavy DSA + theory; behavioral is "tell me about a project" |
-| **L2 — Intermediate** | 🔵 | Mid-level (SWE II) | 2–5 | DSA still core; system design enters; behavioral about ownership |
-| **L3 — Advanced** | 🟠 | Senior (SWE III) | 5–9 | System design co-equal with DSA; behavioral about influence & mentorship |
-| **L4 — Expert** | 🔴 | Staff / Principal / Architect | 9+ | Design + behavioral dominate; DSA is a sanity check, not the bar |
+| **L1 — Basic** | 🟢 | Intern / New Grad / Junior (SWE I) | 0–2 | Heavy DSA + theory; behavioral is "tell me about a project" |
+| **L2 — Intermediate** | 🟡 | Mid-level (SWE II) | 3–7 | DSA still core; system design enters; behavioral about ownership |
+| **L3 — Advanced** | 🟠 | Senior (SWE III) | 8–12 | System design co-equal with DSA; behavioral about influence & mentorship |
+| **L4 — Expert** | 🔴 | Staff / Principal / Architect | 15+ | Design + behavioral dominate; DSA is a sanity check, not the bar |
+
+> Topic files mark each question's tier with these exact badges in their section headings (**🟢 Basic / 🟡 Intermediate / 🟠 Advanced / 🔴 Expert**). [interview-tips-by-level.md](interview-tips-by-level.md) breaks down what each level must *demonstrate*; its year bands match these (0–2 / 3–7 / 8–12 / 15+).
 
 **How to use the badges:**
 
@@ -79,20 +92,22 @@ A long runway is a gift — it lets you build **durable** knowledge instead of c
 
 1. **Maintain a study log.** A single `study-log.md` (or a Notion/Obsidian page) with a one-line daily entry: what you covered, what felt shaky. This is your spaced-repetition backbone — anything "shaky" gets re-queued.
 2. **Build a personal problem journal.** For every DSA problem you solve, log the *pattern*, the *insight that unlocked it*, and your *time-to-solve*. After ~150 problems you'll see your weak patterns statistically, not by gut feel.
-3. **Run a monthly diagnostic.** Once a month, do a timed full mock (one coding + one design + a few behavioral). Score yourself with the rubrics in `06-mock-interviews/`. Your trend line matters more than any single score.
+3. **Run a monthly diagnostic.** Once a month, do a timed full mock (one coding + one design + a few behavioral). Score yourself against the scorecard signals and per-level expectations in [interview-tips-by-level.md](interview-tips-by-level.md). Your trend line matters more than any single score.
 
 **Macro phases for a 6–12 month plan:**
 
 | Phase | Months | Goal |
 |-------|--------|------|
 | **Foundation** | 1–3 | Close theory gaps; learn every core DSA *pattern* (not problem count); read system-design primitives |
-| **Fluency** | 4–7 | Volume DSA practice (medium-heavy); design full systems end-to-end; draft all behavioral stories |
+| **Fluency** | 4–7 | Volume DSA practice (medium-heavy); design full systems end-to-end; draft all behavioral stories; start the AI/ML track (`13-ai-ml/`) if your role touches it — senior+ increasingly expected |
 | **Sharpening** | 8–10 | Timed mocks; harder problems; refine stories from mock feedback; mock with real humans |
 | **Peak & maintain** | 11–12 | Light daily reps to stay warm; target-company-specific prep; rest before loops |
 
 ---
 
 ## 5. Suggested Study Plans
+
+> **This file owns the *schedule*** — the time-boxed plans below are canonical. [study-resources.md](study-resources.md) tells you *which* book or platform to plug into each phase; the README's reading order is just the folder sequence. When either mentions weeks, they map onto the phases here.
 
 ### 5a. The 12-Week Intensive Plan (~15–20 hrs/week)
 
@@ -115,6 +130,8 @@ For candidates with a hard deadline and a reasonable baseline. Each week interle
 
 > **Rule for the 12-week plan:** never let any single day be 100% one track. A typical day = 1 DSA problem set (60–90 min) + one theory or design read (45 min) + one story rehearsal (15 min). Interleaving beats blocking — it's the single most evidence-backed study tactic here.
 
+> **AI/ML track:** interviewing for AI-adjacent or senior+ roles? Fold 2–3 sessions from `13-ai-ml/` (LLM basics → RAG → agents) into weeks 9–12, swapping a design read. A light fifth track, not a full one.
+
 ### 5b. The 6-Month Steady Plan (~8–10 hrs/week)
 
 For employed candidates preparing while working. Same content, more breathing room, deeper retention.
@@ -129,6 +146,8 @@ For employed candidates preparing while working. Same content, more breathing ro
 | **6** | Peak & maintain | Light daily reps | Final mocks | Final delivery polish, rest |
 
 > **Weekly rhythm for the 6-month plan:** 3 DSA sessions, 1 design session, 1 theory session, plus 1 short behavioral rehearsal. One weekend "long session" (2–3 hrs) for a full system design or a timed mock.
+
+> **AI/ML:** slot `13-ai-ml/` reading into months 4–5 (one session/week) for AI-touching or senior+ loops.
 
 ### 5c. Topic-Priority Order by Target Role
 
@@ -156,15 +175,15 @@ Same four tracks, different weighting. Spend your *marginal* hour on the highest
 These tracks reinforce each other; studied together they compound.
 
 - **Theory → DSA.** You can't recognize a graph problem without graph theory. Read the theory page for a pattern *before* drilling its problems. Example: read tree-balancing theory, then solve BST validation and LCA problems the same day.
-- **Theory → System Design.** Indexing theory makes "why is this query slow at scale?" obvious. Concurrency theory makes "how do you prevent double-charging?" answerable. Pull the relevant `01-cs-fundamentals/` page when a design topic stumps you.
+- **Theory → System Design.** Indexing theory makes "why is this query slow at scale?" obvious. Concurrency theory makes "how do you prevent double-charging?" answerable. Pull the relevant fundamentals page (e.g. `05-databases/query-optimization-indexing.md`, `01-backend-java/java-concurrency.md`) when a design topic stumps you.
 - **DSA → System Design.** Designing a rate limiter *is* a heap/queue problem dressed up. Designing autocomplete *is* a trie. The same primitives recur at a larger scale.
 - **Everything → Behavioral.** Your strongest STAR stories should come from real technical work. "Tell me about a hard technical decision" is a behavioral question that you answer with system-design vocabulary. Mine your own projects for these.
 
 **A worked example of combining tracks in one study thread — "Rate Limiter":**
 
-1. *Theory:* read token-bucket vs. leaky-bucket, and atomicity (`01-cs-fundamentals/concurrency.md`).
-2. *DSA:* implement a sliding-window counter and a token bucket in code (`02-data-structures-algorithms/`).
-3. *System Design:* design a *distributed* rate limiter — where does state live, how do you handle clock skew, what's the failure mode? (`03-system-design/`).
+1. *Theory:* read token-bucket vs. leaky-bucket (`02-microservices/resilience-patterns.md`) and atomicity (`01-backend-java/java-concurrency.md`).
+2. *DSA:* implement a sliding-window counter and a token bucket in code (`08-dsa/sliding-window-two-pointers.md`).
+3. *System Design:* design a *distributed* rate limiter — where does state live, how do you handle clock skew, what's the failure mode? (`09-system-design/design-problems/rate-limiter.md`).
 4. *Behavioral:* prepare a story about a time you protected a system under load. The technical depth makes the story credible.
 
 One topic, four tracks, one afternoon — and it sticks because each angle reinforces the others.
@@ -222,7 +241,7 @@ A concrete, copy-this template for a working candidate (~10 hrs/week). Scale tim
 
 ## 9. Recommended Resources
 
-Real, well-regarded resources current as of 2026. You don't need all of them — pick one per track and go deep.
+Real, well-regarded resources current as of 2026. You don't need all of them — pick one per track and go deep. For the fuller, level-tagged catalog (by topic, with a pick-by-level matrix), see [study-resources.md](study-resources.md); quick picks below.
 
 **Books**
 
