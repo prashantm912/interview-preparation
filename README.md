@@ -9,9 +9,9 @@
 
 | Metric | Count |
 |---|---|
-| Topic documents | **129** |
+| Topic documents | **130** |
 | Sections | **15** (00–14) |
-| Interview questions (Q&A) | **~6,064** |
+| Interview questions (Q&A) | **~6,071** |
 | Coding problems with full Java (DSA) | **926** |
 | Experience levels per topic | **4** (0–2y / 3–7y / 8–12y / 15+y) |
 
@@ -140,7 +140,7 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [Terraform & IaC](07-devops-cloud/terraform.md) | Deep | State, modules, plan/apply, drift, OpenTofu | 14 | 9 | 6 | 1 | **30** |
 | [AWS](07-devops-cloud/aws.md) | Deep | Core services, Well-Architected, serverless, IAM | 17 | 10 | 5 | 2 | **34** |
 | [Microsoft Azure](07-devops-cloud/azure.md) | Solid | Core services, AKS, Entra ID, Bicep | 45 | 51 | 25 | 3 | **124** |
-| [Bicep / IaC](07-devops-cloud/bicep.md) | Solid | ARM vs Bicep, modules, param files, secrets, GitHub Actions deploy | — | — | — | — | *cheat sheet* |
+| [Bicep / IaC](07-devops-cloud/bicep.md) | Solid | ARM vs Bicep, modules, param files, secrets, GitHub Actions deploy | 4 | 3 | 0 | 0 | **7** |
 | [Google Cloud Platform](07-devops-cloud/gcp.md) | Solid | Core services, GKE, Cloud Run, BigQuery | 11 | 8 | 2 | 1 | **22** |
 | [SonarQube & Code Quality](07-devops-cloud/sonarqube.md) | Solid | Quality gates, coverage, debt, branch/PR analysis | 45 | 47 | 25 | 4 | **121** |
 | [Prometheus & Grafana](07-devops-cloud/prometheus-grafana.md) | Deep | Metric types, PromQL, alerting, cardinality, SLOs | 65 | 30 | 29 | 2 | **126** |

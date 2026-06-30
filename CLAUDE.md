@@ -25,5 +25,5 @@ Content-only repo. No build, no tests. 140 markdown docs across 15 numbered sect
 
 ## Operational rules
 - Do NOT commit unless user explicitly asks.
-- README counts are regenerated from a script — when adding/removing files or questions, regen rather than hand-edit those tables.
+- README counts come from `tools/count_q.py` — run `python tools/count_q.py` from repo root for per-file T/P/C/B + DSA problem counts, then update the README tables + At a Glance from its output. Don't hand-edit count cells by guessing.
 - Memory index: `C:\Users\prash\.claude\projects\C--Learning-interview-preparation\memory\MEMORY.md`.

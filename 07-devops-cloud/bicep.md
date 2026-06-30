@@ -501,10 +501,10 @@ jobs:
 
 ## 9. Interview Questions & Answers
 
-### Q1. What is Bicep and why use it over ARM templates?
+### Q1. [Theory] What is Bicep and why use it over ARM templates?
 **A:** Bicep is Azure's DSL for IaC. It compiles to ARM templates but reduces boilerplate ~40% with cleaner syntax, strong typing, and module support. ARM templates are JSON-based and harder to read/maintain. For Azure-only infrastructure, Bicep is the modern standard. For multi-cloud, Terraform is necessary.
 
-### Q2. How do you handle secrets (passwords, API keys) in Bicep?
+### Q2. [Practical] How do you handle secrets (passwords, API keys) in Bicep?
 **A:** Never hardcode. Use Azure Key Vault. Pass the Key Vault reference as a parameter, or use `reference()` function to pull secrets at deployment time:
 ```bicep
 param keyVaultName string
@@ -515,20 +515,20 @@ param dbPassword string = kv.getSecret('dbPassword')
 ```
 For GitHub Actions, store secrets in repo settings and pass via environment variables.
 
-### Q3. Explain parameter files. Why separate from the template?
+### Q3. [Theory] Explain parameter files. Why separate from the template?
 **A:** Parameter files let you keep configs per environment (dev.json, prod.json) separate from the template. Single template, multiple environments. Easier to review changes, version control, and test different configs without modifying the template.
 
-### Q4. How does Bicep handle dependencies between resources?
+### Q4. [Theory] How does Bicep handle dependencies between resources?
 **A:** Automatically. If you reference one resource from another (e.g., `subnet.id = vnet.id`), Bicep infers a dependency and ensures deployment order. You can also use `dependsOn: [resource.id]` for explicit ordering.
 
-### Q5. What's the difference between `mode: Incremental` vs `mode: Complete`?
+### Q5. [Theory] What's the difference between `mode: Incremental` vs `mode: Complete`?
 **A:**
 - **Incremental:** Deploy only new/changed resources. Existing untouched resources remain. Safer for ongoing deployments.
 - **Complete:** Delete any resources in the resource group NOT in the template. Dangerous; use only for isolated groups.
 
 For production, use **Incremental** unless you're certain.
 
-### Q6. How do you handle scaling (e.g., deploy 5 VMs instead of 1)?
+### Q6. [Practical] How do you handle scaling (e.g., deploy 5 VMs instead of 1)?
 **A:** Use loops:
 ```bicep
 param vmCount int = 3
@@ -544,7 +544,7 @@ Or use a module in a loop:
 module vmModule 'modules/vm.bicep' = [for i in range(0, vmCount): { ... }]
 ```
 
-### Q7. Design a multi-environment Bicep setup for a 3-tier app (web, app, db).
+### Q7. [Practical] Design a multi-environment Bicep setup for a 3-tier app (web, app, db).
 **A:**
 ```
 infra/
