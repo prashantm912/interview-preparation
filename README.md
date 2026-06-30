@@ -9,10 +9,10 @@
 
 | Metric | Count |
 |---|---|
-| Topic documents | **130** |
-| Sections | **15** (00–14) |
-| Interview questions (Q&A) | **~6,071** |
-| Coding problems with full Java (DSA) | **926** |
+| Topic documents | **149** |
+| Sections | **18** (00–17) |
+| Interview questions (Q&A) | **~8,152** |
+| Coding problems with full Java (DSA) | **1,062** |
 | Experience levels per topic | **4** (0–2y / 3–7y / 8–12y / 15+y) |
 
 This guide is built to be your **primary interview-prep resource for 6–12 months**.
@@ -70,6 +70,7 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [Spring Cloud](01-backend-java/spring-cloud.md) | Deep | Config, discovery, Gateway, OpenFeign, Resilience4j, tracing | 15 | 9 | 6 | 1 | **31** |
 | [Hibernate & JPA](01-backend-java/hibernate-jpa.md) | Deep | Mappings, N+1, caching, locking, JPQL/Criteria, performance | 48 | 51 | 32 | 3 | **134** |
 | [EclipseLink](01-backend-java/eclipselink.md) | Solid | JPA RI, caching, weaving, MOXy, vs Hibernate | 44 | 45 | 32 | 3 | **124** |
+| [Design Patterns & SOLID](01-backend-java/design-patterns.md) | Deep | SOLID, GoF creational/structural/behavioral, DI, anti-patterns, JDK/Spring patterns | 59 | 33 | 24 | 4 | **120** |
 
 ### 02 · Microservices
 | File | Tier | Focus | Theory | Practical | Coding | Behavioral | Total |
@@ -87,6 +88,7 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [ActiveMQ](03-messaging/activemq.md) | Solid | JMS, Artemis vs Classic, persistence, HA | 39 | 28 | 6 | 2 | **75** |
 | [Redis](03-messaging/redis.md) | Deep | Data types, persistence, cluster/sentinel, caching, locks | 41 | 28 | 19 | 2 | **90** |
 | [Event-Driven Architecture](03-messaging/event-driven-architecture.md) | Deep | Event sourcing, CQRS, delivery semantics, outbox, schema evolution | 18 | 8 | 6 | 1 | **33** |
+| [Serialization & Schema Evolution](03-messaging/serialization-schemas.md) | Deep | Protobuf, Avro, schema registry, backward/forward compatibility | 53 | 60 | 0 | 2 | **115** |
 
 ### 04 · APIs & Authentication
 | File | Tier | Focus | Theory | Practical | Coding | Behavioral | Total |
@@ -100,6 +102,7 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [JWT (Advanced Patterns)](04-apis-auth/jwt.md) | Deep | JWS/JWE, alg=none, JWKS, refresh rotation, revocation | 18 | 9 | 4 | 1 | **32** |
 | [API Gateway Patterns](04-apis-auth/api-gateway.md) | Deep | Routing, auth offload, rate limiting, BFF, vs mesh | 16 | 10 | 5 | 1 | **32** |
 | [Auth Patterns (Basic, M2M, mTLS, WS-Security)](04-apis-auth/auth-patterns.md) | Deep | API keys, client creds, mTLS, SAML/WS-Federation, passkeys, zero-trust | 45 | 26 | 8 | 2 | **81** |
+| [gRPC](04-apis-auth/grpc.md) | Deep | Protobuf IDL, HTTP/2, 4 RPC types, interceptors, deadlines, vs REST | 56 | 55 | 0 | 2 | **113** |
 
 ### 05 · Databases
 | File | Tier | Focus | Theory | Practical | Coding | Behavioral | Total |
@@ -112,6 +115,8 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [Query Optimization & Indexing](05-databases/query-optimization-indexing.md) | Deep | Index internals, composite order, plans, slow-query tuning | 38 | 33 | 9 | 2 | **82** |
 | [Sharding & Replication Strategies](05-databases/sharding-replication.md) | Deep | Shard keys, topologies, quorum, distributed SQL | 17 | 8 | 4 | 1 | **30** |
 | [Connection Pooling & HikariCP](05-databases/connection-pooling-hikaricp.md) | Solid | Pool sizing, leak detection, PgBouncer, serverless | 11 | 8 | 3 | 1 | **23** |
+| [Elasticsearch & Search](05-databases/elasticsearch.md) | Deep | Inverted index, analyzers, Query DSL, BM25, aggregations, sharding | 63 | 47 | 11 | 3 | **124** |
+| [Cassandra (Wide-Column)](05-databases/cassandra.md) | Deep | Partition/clustering keys, consistency levels, LSM, compaction, tombstones | 78 | 33 | 16 | 3 | **130** |
 
 ### 06 · UI & Frontend
 | File | Tier | Focus | Theory | Practical | Coding | Behavioral | Total |
@@ -126,6 +131,8 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [Thymeleaf](06-frontend/thymeleaf.md) | Solid | Natural templating, Spring integration, vs JSP | 9 | 7 | 3 | 1 | **20** |
 | [State Management (NgRx & beyond)](06-frontend/state-management-ngrx.md) | Deep | Redux pattern, Effects/Selectors, SignalStore, vs RTK/Zustand | 55 | 29 | 35 | 3 | **122** |
 | [Frontend Security](06-frontend/frontend-security.md) | Deep | XSS, CSRF, CSP, CORS, token storage, supply chain | 41 | 26 | 21 | 2 | **90** |
+| [Web Performance & Browser Internals](06-frontend/web-performance.md) | Deep | Core Web Vitals, critical render path, caching, code-splitting, measuring | 48 | 49 | 13 | 2 | **112** |
+| [PWA & Service Workers](06-frontend/pwa-service-workers.md) | Solid | SW lifecycle, caching strategies, offline, manifest, push, IndexedDB | 52 | 37 | 17 | 4 | **110** |
 
 ### 07 · DevOps & Cloud
 | File | Tier | Focus | Theory | Practical | Coding | Behavioral | Total |
@@ -147,7 +154,7 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [Observability (Metrics/Logs/Traces)](07-devops-cloud/observability.md) | Deep | OpenTelemetry, tracing, RED/USE, SLI/SLO, incident debugging | 42 | 25 | 20 | 3 | **90** |
 
 ### 08 · Data Structures & Algorithms
-> Start with the [complexity cheat-sheet](08-dsa/complexity-analysis.md). **926 fully-solved coding problems** in Java across these files.
+> Start with the [complexity cheat-sheet](08-dsa/complexity-analysis.md). **1,062 fully-solved coding problems** in Java across these files.
 > DSA files contain solved coding problems, not Q&A — the **Coding** column shows Java solutions per file.
 
 | File | Focus | Theory | Practical | Coding | Behavioral | Total |
@@ -171,6 +178,7 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [Union-Find & Topological Sort](08-dsa/union-find-topological.md) | DSU, Kruskal, Kahn, alien dictionary | — | — | 49 solved | — | **49** |
 | [Shortest Path](08-dsa/shortest-path.md) | Dijkstra, Bellman-Ford, Floyd-Warshall, 0-1 BFS | — | — | 48 solved | — | **48** |
 | [Minimum Spanning Tree](08-dsa/mst.md) | Prim, Kruskal, cut property, applications | — | — | 43 solved | — | **43** |
+| [Bit Manipulation](08-dsa/bit-manipulation.md) | XOR tricks, masks, popcount, bitmask DP, SWAR/broadword, linear basis | — | — | 136 solved | — | **136** |
 
 ### 09 · System Design & Architecture
 **Concepts**
@@ -233,6 +241,8 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [Cloud Cost Optimization & FinOps](11-additional-topics/cost-optimization.md) | Rightsizing, spot, tiering, K8s cost | 10 | 6 | 2 | 2 | **20** |
 | [Compliance & Regulatory](11-additional-topics/compliance-regulatory.md) | GDPR, HIPAA, PCI-DSS, SOC 2, data residency | 10 | 7 | 2 | 1 | **20** |
 | [Modern Architecture (2024–2026)](11-additional-topics/modern-architecture-2024-2026.md) | Platform engineering, GitOps, cell-based, WASM, AI-native | 18 | 9 | 5 | 1 | **33** |
+| [Data Engineering & Stream Processing](11-additional-topics/data-engineering.md) | Spark/Flink, batch vs stream, ETL/ELT, lakehouse, Airflow, windowing | 60 | 41 | 14 | 3 | **118** |
+| [Feature Flags](11-additional-topics/feature-flags.md) | Flag types, rollout/canary, targeting, kill switch, trunk-based, lifecycle | 48 | 34 | 22 | 2 | **106** |
 
 ### 12 · Behavioral & Leadership
 | File | Focus | Theory | Practical | Coding | Behavioral | Total |
@@ -250,6 +260,7 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [AI Agents & Orchestration](13-ai-ml/ai-agents.md) | Deep | Agent loop, tools/MCP, planning, multi-agent, memory, frameworks, observability | 20 | 12 | 3 | 1 | **36** |
 | [ML System Design & MLOps](13-ai-ml/ml-system-design.md) | Deep | Training/serving split, feature stores, vLLM/Triton, drift, A/B & shadow, GPU scaling | 20 | 7 | 4 | 1 | **32** |
 | [GenAI Security, Safety & Governance](13-ai-ml/genai-security-governance.md) | Deep | Prompt injection, jailbreaks, OWASP LLM Top 10, red-teaming, EU AI Act, NIST AI RMF | 19 | 12 | 4 | 1 | **36** |
+| [Classic ML Fundamentals](13-ai-ml/ml-fundamentals.md) | Deep | Bias-variance, metrics, regression, trees/boosting, k-means, PCA, feature eng | 50 | 38 | 22 | 3 | **113** |
 
 ### 14 · Hands-On Build Projects
 > The **build-it track** — turn the guides into running code. These are project specs and a build curriculum, not tagged Q&A, so they're not part of the question counts above.
@@ -262,6 +273,28 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [Project Briefs](14-hands-on-projects/project-briefs.md) | Answer-key worked specs for all 110 (use after your own attempt) |
 
 > Applied **AI/ML builds** live with the AI section: [rag-mini-project-java.md](13-ai-ml/rag-mini-project-java.md) (Java/LangChain4j) and [rag-mini-project.md](13-ai-ml/rag-mini-project.md) (Python). A concrete 8-week schedule weaving these in: [study-schedule.md](00-getting-started/study-schedule.md).
+
+### 15 · Computer Science Fundamentals
+> The tech-agnostic core every loop assumes — OS, networking, Linux, crypto.
+
+| File | Tier | Focus | Theory | Practical | Coding | Behavioral | Total |
+|---|---|---|:---:|:---:|:---:|:---:|:---:|
+| [Operating Systems](15-cs-fundamentals/operating-systems.md) | Deep | Processes/threads, scheduling, virtual memory, paging, deadlock, sync, IPC | 63 | 30 | 20 | 2 | **115** |
+| [Networking](15-cs-fundamentals/networking.md) | Deep | TCP/UDP, HTTP/1-2-3, TLS, DNS, sockets, WebSocket, LB L4/L7, CDN | 73 | 22 | 14 | 4 | **113** |
+| [Linux & Shell](15-cs-fundamentals/linux-shell.md) | Deep | Permissions, processes, bash scripting, grep/sed/awk, networking tools, troubleshooting | 36 | 51 | 23 | 3 | **113** |
+| [Cryptography Fundamentals](15-cs-fundamentals/cryptography.md) | Deep | Hashing, AES, RSA/ECC, DH, signatures, PKI/TLS, password hashing | 61 | 36 | 8 | 3 | **108** |
+
+### 16 · Testing & Quality
+| File | Tier | Focus | Theory | Practical | Coding | Behavioral | Total |
+|---|---|---|:---:|:---:|:---:|:---:|:---:|
+| [Testing (JUnit, Mockito, Integration)](16-testing/testing.md) | Deep | JUnit 5, Mockito, Testcontainers, test pyramid, TDD, contract, perf testing | 46 | 48 | 15 | 4 | **113** |
+| [API Testing](16-testing/api-testing.md) | Deep | REST Assured, WireMock, contract testing, schema validation, negative tests | 47 | 52 | 11 | 2 | **112** |
+
+### 17 · Languages (Beyond Java)
+| File | Tier | Focus | Theory | Practical | Coding | Behavioral | Total |
+|---|---|---|:---:|:---:|:---:|:---:|:---:|
+| [Python (Language Deep-Dive)](17-languages/python.md) | Deep | Data model, GIL, generators, decorators, async, typing, memory model | 65 | 26 | 36 | 3 | **130** |
+| [Go (Language Deep-Dive)](17-languages/go.md) | Deep | Goroutines/channels, GMP scheduler, interfaces, errors, slices, generics | 50 | 28 | 35 | 3 | **116** |
 
 ---
 
