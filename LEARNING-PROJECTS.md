@@ -595,9 +595,9 @@ So the real working order for Stage 2 is **P52 → P53 → P54**, not "jump to R
 
 ## Where the other ~92 projects go (capstones vs. standalone reps)
 
-The broker capstone uses ~18 projects. The remaining ~92 split cleanly into **4 more mini-capstones (37 projects)** and **standalone skill reps (55 projects)**. Net: ~55 of the 110 connect into 5 real systems; ~55 are independent reps you do on demand.
+The broker capstone uses ~18 projects. The remaining ~92 split cleanly into **5 more mini-capstones (37 projects)** and **standalone skill reps (55 projects)**. Net: ~55 of the 110 connect into 6 real systems; ~55 are independent reps you do on demand.
 
-### Bucket 2 — the 4 other mini-capstones
+### Bucket 2 — the 5 other mini-capstones
 
 Each is its own "build one system" spine, like the broker. `*` = shared with the broker capstone (build once, reuse).
 
@@ -627,7 +627,7 @@ These don't belong to any capstone. They're independent reps: do them as **warm-
 | **Security reps** | P94, P95, P96, P97, P98 | Do the ones relevant to your work (OAuth/PKCE, mTLS, envelope encryption). |
 | **Performance reps** | P99, P100, P101, P102, P103, P104, P105 | **APPLY to your capstone** (profile/optimize it) — don't build separately. |
 
-**The mental model:** not "110 projects to finish" but **"5 systems + ~55 skill reps."** Do the broker + 1–2 mini-capstones (your weak areas) + cherry-picked reps as prerequisites → that's the ~40 the cadence table recommends, and they're *connected*, not orphaned.
+**The mental model:** not "110 projects to finish" but **"6 systems + ~55 skill reps."** Do the broker + 1–2 mini-capstones (your weak areas) + cherry-picked reps as prerequisites → that's the ~40 the cadence table recommends, and they're *connected*, not orphaned.
 
 ---
 

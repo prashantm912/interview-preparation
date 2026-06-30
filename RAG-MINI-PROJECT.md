@@ -53,7 +53,7 @@ USER QUERY:
          ├─→ [Embed query]
          │
          ├─→ [Retrieve top-3 chunks from vector store]
-         │       → chunk from 09-system-design/chat-system.md
+         │       → chunk from 09-system-design/design-problems/chat-system.md
          │       → chunk from 09-system-design/distributed-systems.md
          │       → chunk from 03-messaging/kafka.md
          │
@@ -135,7 +135,7 @@ cd interview-preparation
 # Create a small input set for testing (don't ingest all 129 docs yet)
 mkdir docs-for-rag
 cp 09-system-design/fundamentals.md docs-for-rag/
-cp 09-system-design/chat-system.md docs-for-rag/
+cp 09-system-design/design-problems/chat-system.md docs-for-rag/
 cp 13-ai-ml/llm-fundamentals.md docs-for-rag/
 cp 13-ai-ml/rag-systems.md docs-for-rag/
 cp 03-messaging/kafka.md docs-for-rag/

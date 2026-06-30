@@ -166,7 +166,7 @@ This is where a 15-yr profile wins. These map to `02-microservices/`, `11-additi
 
 ## How to Fit These Into the 8-Week Schedule
 
-You don't do all 15. Pick ~5–6 weighted to your gaps. Suggested integration:
+You don't do all of them. Pick ~5–6 weighted to your gaps. Suggested integration:
 
 | Week | Schedule focus | Add this project |
 |---|---|---|
