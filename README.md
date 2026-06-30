@@ -10,9 +10,9 @@
 | Metric | Count |
 |---|---|
 | Topic documents | **129** |
-| Sections | **14** |
-| Interview questions (Q&A) | **~6,247** |
-| Coding problems with full Java (DSA) | **~936** |
+| Sections | **15** (00–14) |
+| Interview questions (Q&A) | **~6,064** |
+| Coding problems with full Java (DSA) | **926** |
 | Experience levels per topic | **4** (0–2y / 3–7y / 8–12y / 15+y) |
 
 This guide is built to be your **primary interview-prep resource for 6–12 months**.
@@ -140,34 +140,35 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [Terraform & IaC](07-devops-cloud/terraform.md) | Deep | State, modules, plan/apply, drift, OpenTofu | 14 | 9 | 6 | 1 | **30** |
 | [AWS](07-devops-cloud/aws.md) | Deep | Core services, Well-Architected, serverless, IAM | 17 | 10 | 5 | 2 | **34** |
 | [Microsoft Azure](07-devops-cloud/azure.md) | Solid | Core services, AKS, Entra ID, Bicep | 45 | 51 | 25 | 3 | **124** |
+| [Bicep / IaC](07-devops-cloud/bicep.md) | Solid | ARM vs Bicep, modules, param files, secrets, GitHub Actions deploy | — | — | — | — | *cheat sheet* |
 | [Google Cloud Platform](07-devops-cloud/gcp.md) | Solid | Core services, GKE, Cloud Run, BigQuery | 11 | 8 | 2 | 1 | **22** |
 | [SonarQube & Code Quality](07-devops-cloud/sonarqube.md) | Solid | Quality gates, coverage, debt, branch/PR analysis | 45 | 47 | 25 | 4 | **121** |
 | [Prometheus & Grafana](07-devops-cloud/prometheus-grafana.md) | Deep | Metric types, PromQL, alerting, cardinality, SLOs | 65 | 30 | 29 | 2 | **126** |
 | [Observability (Metrics/Logs/Traces)](07-devops-cloud/observability.md) | Deep | OpenTelemetry, tracing, RED/USE, SLI/SLO, incident debugging | 42 | 25 | 20 | 3 | **90** |
 
 ### 08 · Data Structures & Algorithms
-> Start with the [complexity cheat-sheet](08-dsa/complexity-analysis.md). **~936+ fully-solved coding problems** in Java across these files.
+> Start with the [complexity cheat-sheet](08-dsa/complexity-analysis.md). **926 fully-solved coding problems** in Java across these files.
 > DSA files contain solved coding problems, not Q&A — the **Coding** column shows Java solutions per file.
 
 | File | Focus | Theory | Practical | Coding | Behavioral | Total |
 |---|---|:---:|:---:|:---:|:---:|:---:|
-| [Time & Space Complexity Analysis](08-dsa/complexity-analysis.md) | Big-O/Ω/Θ, Master Theorem, amortized analysis | — | — | 45 solved | — | **45** |
+| [Time & Space Complexity Analysis](08-dsa/complexity-analysis.md) | Big-O/Ω/Θ, Master Theorem, amortized analysis | — | — | 44 solved | — | **44** |
 | [Arrays & Strings](08-dsa/arrays-strings.md) | Prefix sums, Kadane, two-pointer, KMP, intervals | — | — | 50 solved | — | **50** |
 | [Linked Lists](08-dsa/linked-lists.md) | Reverse, cycle detection, merge-k, LRU | — | — | 49 solved | — | **49** |
 | [Stacks & Queues](08-dsa/stacks-queues.md) | Monotonic stack/deque, histogram, RPN | — | — | 50 solved | — | **50** |
-| [Hash Tables & Maps](08-dsa/hashing.md) | Collisions, two-sum family, top-k, LRU/LFU | — | — | 49 solved | — | **49** |
-| [Trees (Binary, BST, AVL, B-Trees)](08-dsa/trees.md) | Traversals, LCA, serialize, balancing, B+-trees | — | — | 51 solved | — | **51** |
+| [Hash Tables & Maps](08-dsa/hashing.md) | Collisions, two-sum family, top-k, LRU/LFU | — | — | 48 solved | — | **48** |
+| [Trees (Binary, BST, AVL, B-Trees)](08-dsa/trees.md) | Traversals, LCA, serialize, balancing, B+-trees | — | — | 50 solved | — | **50** |
 | [Heaps & Priority Queues](08-dsa/heaps-priority-queues.md) | Heapsort, kth-largest, median stream, merge-k | — | — | 47 solved | — | **47** |
-| [Trie, Segment Tree & Fenwick Tree](08-dsa/tries-segment-fenwick.md) | Autocomplete, range queries, inversions | — | — | 49 solved | — | **49** |
-| [Graphs](08-dsa/graphs.md) | BFS/DFS, components, topo, islands, clone | — | — | 52 solved | — | **52** |
+| [Trie, Segment Tree & Fenwick Tree](08-dsa/tries-segment-fenwick.md) | Autocomplete, range queries, inversions | — | — | 48 solved | — | **48** |
+| [Graphs](08-dsa/graphs.md) | BFS/DFS, components, topo, islands, clone | — | — | 51 solved | — | **51** |
 | [Sorting Algorithms](08-dsa/sorting.md) | Quick/merge/heap/radix, stability, TimSort | — | — | 47 solved | — | **47** |
-| [Searching Algorithms](08-dsa/searching.md) | Binary search on answer, rotated, 2-sorted median | — | — | 51 solved | — | **51** |
+| [Searching Algorithms](08-dsa/searching.md) | Binary search on answer, rotated, 2-sorted median | — | — | 49 solved | — | **49** |
 | [Recursion & Backtracking](08-dsa/recursion-backtracking.md) | Subsets/permutations, N-Queens, Sudoku | — | — | 50 solved | — | **50** |
 | [Dynamic Programming (1D/2D/opt)](08-dsa/dynamic-programming.md) | Knapsack, LCS, LIS, interval/tree/bitmask DP | — | — | 53 solved | — | **53** |
 | [Greedy Algorithms](08-dsa/greedy.md) | Interval scheduling, Huffman, exchange argument | — | — | 51 solved | — | **51** |
-| [Divide & Conquer](08-dsa/divide-conquer.md) | Closest pair, inversions, Karatsuba, skyline | — | — | 49 solved | — | **49** |
+| [Divide & Conquer](08-dsa/divide-conquer.md) | Closest pair, inversions, Karatsuba, skyline | — | — | 48 solved | — | **48** |
 | [Sliding Window & Two Pointers](08-dsa/sliding-window-two-pointers.md) | Min window, 3-sum, container with water | — | — | 51 solved | — | **51** |
-| [Union-Find & Topological Sort](08-dsa/union-find-topological.md) | DSU, Kruskal, Kahn, alien dictionary | — | — | 51 solved | — | **51** |
+| [Union-Find & Topological Sort](08-dsa/union-find-topological.md) | DSU, Kruskal, Kahn, alien dictionary | — | — | 49 solved | — | **49** |
 | [Shortest Path](08-dsa/shortest-path.md) | Dijkstra, Bellman-Ford, Floyd-Warshall, 0-1 BFS | — | — | 48 solved | — | **48** |
 | [Minimum Spanning Tree](08-dsa/mst.md) | Prim, Kruskal, cut property, applications | — | — | 43 solved | — | **43** |
 
@@ -249,6 +250,18 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [AI Agents & Orchestration](13-ai-ml/ai-agents.md) | Deep | Agent loop, tools/MCP, planning, multi-agent, memory, frameworks, observability | 20 | 12 | 3 | 1 | **36** |
 | [ML System Design & MLOps](13-ai-ml/ml-system-design.md) | Deep | Training/serving split, feature stores, vLLM/Triton, drift, A/B & shadow, GPU scaling | 20 | 7 | 4 | 1 | **32** |
 | [GenAI Security, Safety & Governance](13-ai-ml/genai-security-governance.md) | Deep | Prompt injection, jailbreaks, OWASP LLM Top 10, red-teaming, EU AI Act, NIST AI RMF | 19 | 12 | 4 | 1 | **36** |
+
+### 14 · Hands-On Build Projects
+> The **build-it track** — turn the guides into running code. These are project specs and a build curriculum, not tagged Q&A, so they're not part of the question counts above.
+
+| File | What it is |
+|---|---|
+| [Hands-On Projects (Java)](14-hands-on-projects/hands-on-projects.md) | ~13 scoped Java builds (rate limiter, chat backend, saga, observability…) mapped to system-design & DSA topics — pick 5–6 by weak spot |
+| [Ground-Up Learning Projects](14-hands-on-projects/learning-projects.md) | ~110 "build X from scratch to understand Y" projects across 13 tracks, organized into 6 capstones (6–18 months) |
+| [Project Playbook](14-hands-on-projects/project-playbook.md) | The method to work any of the 110: recon → naive build → break → compare → gate |
+| [Project Briefs](14-hands-on-projects/project-briefs.md) | Answer-key worked specs for all 110 (use after your own attempt) |
+
+> Applied **AI/ML builds** live with the AI section: [rag-mini-project-java.md](13-ai-ml/rag-mini-project-java.md) (Java/LangChain4j) and [rag-mini-project.md](13-ai-ml/rag-mini-project.md) (Python). A concrete 8-week schedule weaving these in: [study-schedule.md](00-getting-started/study-schedule.md).
 
 ---
 
