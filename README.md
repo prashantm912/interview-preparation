@@ -9,10 +9,10 @@
 
 | Metric | Count |
 |---|---|
-| Topic documents | **149** |
+| Topic documents | **171** |
 | Sections | **18** (00–17) |
-| Interview questions (Q&A) | **~8,152** |
-| Coding problems with full Java (DSA) | **1,062** |
+| Interview questions (Q&A) | **~10,348** |
+| Coding problems with full Java (DSA) | **1,466** |
 | Experience levels per topic | **4** (0–2y / 3–7y / 8–12y / 15+y) |
 
 This guide is built to be your **primary interview-prep resource for 6–12 months**.
@@ -79,6 +79,7 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [Resilience Patterns](02-microservices/resilience-patterns.md) | Deep | Circuit breaker, retry/backoff, bulkhead, rate limit, chaos | 51 | 44 | 21 | 5 | **121** |
 | [Saga & Distributed Transactions](02-microservices/saga-distributed-tx.md) | Deep | Orchestration vs choreography, outbox+CDC, exactly-once | 19 | 8 | 4 | 1 | **32** |
 | [Service Mesh](02-microservices/service-mesh.md) | Solid | Envoy/Istio/Linkerd, mTLS, ambient/eBPF, vs libraries | 10 | 8 | 2 | 1 | **21** |
+| [Domain-Driven Design (DDD)](02-microservices/domain-driven-design.md) | Deep | Bounded contexts, aggregates, domain events, context mapping, ACL, CQRS+DDD | 61 | 32 | 19 | 3 | **115** |
 
 ### 03 · Message Queues & Streaming
 | File | Tier | Focus | Theory | Practical | Coding | Behavioral | Total |
@@ -103,6 +104,7 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [API Gateway Patterns](04-apis-auth/api-gateway.md) | Deep | Routing, auth offload, rate limiting, BFF, vs mesh | 16 | 10 | 5 | 1 | **32** |
 | [Auth Patterns (Basic, M2M, mTLS, WS-Security)](04-apis-auth/auth-patterns.md) | Deep | API keys, client creds, mTLS, SAML/WS-Federation, passkeys, zero-trust | 45 | 26 | 8 | 2 | **81** |
 | [gRPC](04-apis-auth/grpc.md) | Deep | Protobuf IDL, HTTP/2, 4 RPC types, interceptors, deadlines, vs REST | 56 | 55 | 0 | 2 | **113** |
+| [Web Application Security (OWASP Top 10)](04-apis-auth/web-appsec-owasp.md) | Deep | OWASP Top 10, injection, access control, XSS/CSRF/SSRF, headers, secrets | 53 | 46 | 14 | 3 | **116** |
 
 ### 05 · Databases
 | File | Tier | Focus | Theory | Practical | Coding | Behavioral | Total |
@@ -117,6 +119,7 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [Connection Pooling & HikariCP](05-databases/connection-pooling-hikaricp.md) | Solid | Pool sizing, leak detection, PgBouncer, serverless | 11 | 8 | 3 | 1 | **23** |
 | [Elasticsearch & Search](05-databases/elasticsearch.md) | Deep | Inverted index, analyzers, Query DSL, BM25, aggregations, sharding | 63 | 47 | 11 | 3 | **124** |
 | [Cassandra (Wide-Column)](05-databases/cassandra.md) | Deep | Partition/clustering keys, consistency levels, LSM, compaction, tombstones | 78 | 33 | 16 | 3 | **130** |
+| [Time-Series Databases](05-databases/time-series-databases.md) | Solid | TSDB vs RDBMS, InfluxDB/TimescaleDB/Prometheus, downsampling, compression, cardinality | 56 | 41 | 14 | 3 | **114** |
 
 ### 06 · UI & Frontend
 | File | Tier | Focus | Theory | Practical | Coding | Behavioral | Total |
@@ -133,6 +136,9 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [Frontend Security](06-frontend/frontend-security.md) | Deep | XSS, CSRF, CSP, CORS, token storage, supply chain | 41 | 26 | 21 | 2 | **90** |
 | [Web Performance & Browser Internals](06-frontend/web-performance.md) | Deep | Core Web Vitals, critical render path, caching, code-splitting, measuring | 48 | 49 | 13 | 2 | **112** |
 | [PWA & Service Workers](06-frontend/pwa-service-workers.md) | Solid | SW lifecycle, caching strategies, offline, manifest, push, IndexedDB | 52 | 37 | 17 | 4 | **110** |
+| [Mobile Development](06-frontend/mobile-development.md) | Solid | Native vs cross-platform (RN/Flutter), lifecycle, state, offline, push, deploy | 50 | 38 | 17 | 3 | **108** |
+| [WebRTC & Real-Time Media](06-frontend/webrtc-realtime.md) | Solid | P2P, signaling, STUN/TURN/ICE, SDP, codecs, SFU vs MCU vs mesh, DTLS-SRTP | 71 | 33 | 16 | 3 | **123** |
+| [Micro-Frontends](06-frontend/micro-frontends.md) | Solid | Module Federation, integration approaches, shared deps, isolation, independent deploy | 61 | 47 | 0 | 3 | **111** |
 
 ### 07 · DevOps & Cloud
 | File | Tier | Focus | Theory | Practical | Coding | Behavioral | Total |
@@ -148,13 +154,14 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [AWS](07-devops-cloud/aws.md) | Deep | Core services, Well-Architected, serverless, IAM | 17 | 10 | 5 | 2 | **34** |
 | [Microsoft Azure](07-devops-cloud/azure.md) | Solid | Core services, AKS, Entra ID, Bicep | 45 | 51 | 25 | 3 | **124** |
 | [Bicep / IaC](07-devops-cloud/bicep.md) | Solid | ARM vs Bicep, modules, param files, secrets, GitHub Actions deploy | 4 | 3 | 0 | 0 | **7** |
+| [Serverless & FaaS Patterns](07-devops-cloud/serverless-faas.md) | Deep | Lambda execution model, cold starts, concurrency, Step Functions, idempotency, cost | 56 | 36 | 13 | 4 | **109** |
 | [Google Cloud Platform](07-devops-cloud/gcp.md) | Solid | Core services, GKE, Cloud Run, BigQuery | 11 | 8 | 2 | 1 | **22** |
 | [SonarQube & Code Quality](07-devops-cloud/sonarqube.md) | Solid | Quality gates, coverage, debt, branch/PR analysis | 45 | 47 | 25 | 4 | **121** |
 | [Prometheus & Grafana](07-devops-cloud/prometheus-grafana.md) | Deep | Metric types, PromQL, alerting, cardinality, SLOs | 65 | 30 | 29 | 2 | **126** |
 | [Observability (Metrics/Logs/Traces)](07-devops-cloud/observability.md) | Deep | OpenTelemetry, tracing, RED/USE, SLI/SLO, incident debugging | 42 | 25 | 20 | 3 | **90** |
 
 ### 08 · Data Structures & Algorithms
-> Start with the [complexity cheat-sheet](08-dsa/complexity-analysis.md). **1,062 fully-solved coding problems** in Java across these files.
+> Start with the [complexity cheat-sheet](08-dsa/complexity-analysis.md). **1,466 fully-solved coding problems** in Java across these files.
 > DSA files contain solved coding problems, not Q&A — the **Coding** column shows Java solutions per file.
 
 | File | Focus | Theory | Practical | Coding | Behavioral | Total |
@@ -179,6 +186,9 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [Shortest Path](08-dsa/shortest-path.md) | Dijkstra, Bellman-Ford, Floyd-Warshall, 0-1 BFS | — | — | 48 solved | — | **48** |
 | [Minimum Spanning Tree](08-dsa/mst.md) | Prim, Kruskal, cut property, applications | — | — | 43 solved | — | **43** |
 | [Bit Manipulation](08-dsa/bit-manipulation.md) | XOR tricks, masks, popcount, bitmask DP, SWAR/broadword, linear basis | — | — | 136 solved | — | **136** |
+| [Math & Number Theory](08-dsa/math-number-theory.md) | GCD, sieve, modular arithmetic/inverse, fast exponentiation, combinatorics, CRT | — | — | 129 solved | — | **129** |
+| [Advanced String Algorithms](08-dsa/advanced-string-algorithms.md) | KMP, Z, suffix array/automaton, Aho-Corasick, Manacher, rolling hash | — | — | 166 solved | — | **166** |
+| [Computational Geometry](08-dsa/computational-geometry.md) | Cross product, convex hull, segment intersection, closest pair, sweep line | — | — | 109 solved | — | **109** |
 
 ### 09 · System Design & Architecture
 **Concepts**
@@ -194,6 +204,7 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [Reliability, Resilience & Operations](09-system-design/ops-reliability.md) | Deep | Nines, failover, DR (RTO/RPO), deploys, chaos, load testing | 15 | 9 | 5 | 1 | **30** |
 | [Security Architecture](09-system-design/security-architecture.md) | Deep | Zero-trust, encryption, KMS/secrets, OWASP API Top 10, STRIDE | 17 | 9 | 5 | 2 | **33** |
 | [Observability & Monitoring Design](09-system-design/observability-design.md) | Deep | OTel pipeline, SLO/error budgets, alerting design | 15 | 10 | 4 | 1 | **30** |
+| [Software Architecture Styles](09-system-design/architecture-styles.md) | Deep | Layered, hexagonal, clean, event-driven, modular monolith, choosing a style | 67 | 33 | 0 | 7 | **107** |
 
 **Real-World Design Problems**
 > Interview-grade case studies (requirements → scale estimate → design → deep-dive → tagged Q&A). Use them to practice the canonical framework end-to-end.
@@ -261,6 +272,9 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [ML System Design & MLOps](13-ai-ml/ml-system-design.md) | Deep | Training/serving split, feature stores, vLLM/Triton, drift, A/B & shadow, GPU scaling | 20 | 7 | 4 | 1 | **32** |
 | [GenAI Security, Safety & Governance](13-ai-ml/genai-security-governance.md) | Deep | Prompt injection, jailbreaks, OWASP LLM Top 10, red-teaming, EU AI Act, NIST AI RMF | 19 | 12 | 4 | 1 | **36** |
 | [Classic ML Fundamentals](13-ai-ml/ml-fundamentals.md) | Deep | Bias-variance, metrics, regression, trees/boosting, k-means, PCA, feature eng | 50 | 38 | 22 | 3 | **113** |
+| [Statistics & Experimentation](13-ai-ml/statistics-experimentation.md) | Deep | Distributions, hypothesis testing, power, A/B design, CUPED, causal inference | 53 | 25 | 27 | 3 | **108** |
+| [Deep Learning Fundamentals](13-ai-ml/deep-learning-fundamentals.md) | Deep | MLP/backprop, optimizers, CNN/RNN/LSTM, attention, regularization, fine-tuning | 64 | 25 | 25 | 2 | **116** |
+| [Recommender Systems](13-ai-ml/recommender-systems.md) | Deep | Collaborative filtering, matrix factorization, two-tower, cold start, NDCG | 60 | 30 | 19 | 2 | **111** |
 
 ### 14 · Hands-On Build Projects
 > The **build-it track** — turn the guides into running code. These are project specs and a build curriculum, not tagged Q&A, so they're not part of the question counts above.
@@ -283,6 +297,9 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 | [Networking](15-cs-fundamentals/networking.md) | Deep | TCP/UDP, HTTP/1-2-3, TLS, DNS, sockets, WebSocket, LB L4/L7, CDN | 73 | 22 | 14 | 4 | **113** |
 | [Linux & Shell](15-cs-fundamentals/linux-shell.md) | Deep | Permissions, processes, bash scripting, grep/sed/awk, networking tools, troubleshooting | 36 | 51 | 23 | 3 | **113** |
 | [Cryptography Fundamentals](15-cs-fundamentals/cryptography.md) | Deep | Hashing, AES, RSA/ECC, DH, signatures, PKI/TLS, password hashing | 61 | 36 | 8 | 3 | **108** |
+| [Concurrency & Parallelism Patterns](15-cs-fundamentals/concurrency-parallelism.md) | Deep | Locks, lock-free/CAS, memory models, actors, CSP, classic concurrency problems | 61 | 50 | 8 | 2 | **121** |
+| [Regular Expressions](15-cs-fundamentals/regular-expressions.md) | Solid | Syntax, NFA/DFA, backtracking & ReDoS, lookarounds, Java Pattern/Matcher | 60 | 29 | 22 | 6 | **117** |
+| [Embedded Systems & RTOS](15-cs-fundamentals/embedded-rtos.md) | Solid | Bare-metal vs RTOS, real-time scheduling, priority inversion, ISRs, I2C/SPI/UART | 61 | 27 | 21 | 3 | **112** |
 
 ### 16 · Testing & Quality
 | File | Tier | Focus | Theory | Practical | Coding | Behavioral | Total |
@@ -295,6 +312,11 @@ Each question is tagged **[Theory]**, **[Practical]**, **[Coding]**, or **[Behav
 |---|---|---|:---:|:---:|:---:|:---:|:---:|
 | [Python (Language Deep-Dive)](17-languages/python.md) | Deep | Data model, GIL, generators, decorators, async, typing, memory model | 65 | 26 | 36 | 3 | **130** |
 | [Go (Language Deep-Dive)](17-languages/go.md) | Deep | Goroutines/channels, GMP scheduler, interfaces, errors, slices, generics | 50 | 28 | 35 | 3 | **116** |
+| [C++ (Language Deep-Dive)](17-languages/cpp.md) | Deep | RAII, smart pointers, move semantics, rule of 0/3/5, templates, STL, vtables | 57 | 34 | 26 | 4 | **121** |
+| [Rust (Language Deep-Dive)](17-languages/rust.md) | Deep | Ownership, borrowing, lifetimes, traits, Option/Result, Send/Sync, async | 64 | 49 | 12 | 3 | **128** |
+| [Node.js Backend](17-languages/nodejs.md) | Deep | Event loop, libuv, streams & backpressure, worker_threads, CJS vs ESM | 55 | 24 | 29 | 4 | **112** |
+| [Kotlin (Language Deep-Dive)](17-languages/kotlin.md) | Deep | Null safety, data/sealed classes, coroutines, Flow, scope functions, Java interop | 58 | 45 | 20 | 4 | **127** |
+| [Scala (Language Deep-Dive)](17-languages/scala.md) | Deep | FP+OO, pattern matching, traits, implicits/given, variance, Futures, Spark | 61 | 22 | 34 | 3 | **120** |
 
 ---
 

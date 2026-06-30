@@ -1,6 +1,6 @@
 # Interview Preparation Guide — Claude Context
 
-Content-only repo. No build, no tests. 159 markdown docs across 18 numbered sections (00–17).
+Content-only repo. No build, no tests. 181 markdown docs across 18 numbered sections (00–17).
 
 ## Layout
 - `00-getting-started/` … `13-ai-ml/` — topic sections (`00-getting-started/` also holds `study-schedule.md`; the two `rag-mini-project*.md` builds live in `13-ai-ml/`; `bicep.md` in `07-devops-cloud/`)
