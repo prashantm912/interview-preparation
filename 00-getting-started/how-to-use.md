@@ -51,6 +51,17 @@ interview-preparation/
 └── 13-ai-ml/                       ← AI/ML for engineers: LLMs, RAG, agents, MLOps, GenAI security
 ```
 
+**Root-level companion docs** (siblings of this `00-getting-started/` folder — the *build* and *concrete-schedule* tracks that sit alongside the topic sections):
+
+| Doc | What it is |
+|---|---|
+| [STUDY-SCHEDULE.md](../STUDY-SCHEDULE.md) | A concrete **8-week interview sprint** — a worked, personalized instance of the §5 plans (60% system design / AI/ML / behavioral). Use it as a template; the §5 plans are role-agnostic. |
+| [HANDS-ON-PROJECTS.md](../HANDS-ON-PROJECTS.md) | Java **build projects** that turn `09-system-design/` + DSA reading into running code; sized to slot into a weekly plan. Pick 5–6 by weak spot. |
+| [LEARNING-PROJECTS.md](../LEARNING-PROJECTS.md) | The **long game**: ~110 "build X from scratch to understand Y" projects across 13 tracks (6–18 months). Separate from interview cram — closes real internals gaps. |
+| [PROJECT-PLAYBOOK.md](../PROJECT-PLAYBOOK.md) · [PROJECT-BRIEFS.md](../PROJECT-BRIEFS.md) | The *method* for working any of the 110 (recon → build → compare) and the *answer-key* briefs to check yourself against. |
+| [RAG-MINI-PROJECT-JAVA.md](../RAG-MINI-PROJECT-JAVA.md) · [RAG-MINI-PROJECT.md](../RAG-MINI-PROJECT.md) | Hands-on **AI/ML build** (Java/LangChain4j + Python) — the applied companion to `13-ai-ml/`. |
+| [BICEP-INTERVIEW-GUIDE.md](../BICEP-INTERVIEW-GUIDE.md) | Azure **Bicep / IaC** gap-closer — pairs with `07-devops-cloud/terraform.md`. |
+
 **The four tracks map *across* these technology folders, not onto single folders.** Theory lives wherever the tech does (`01-backend-java/`, `05-databases/`, `03-messaging/`, `02-microservices/`, `04-apis-auth/`, `07-devops-cloud/`); **DSA** is `08-dsa/`; **System Design** is `09-system-design/` (+ `design-problems/`); **Behavioral** is `12-behavioral/`. Two areas sit outside the original four but show up in real loops — don't skip them for your role: `13-ai-ml/` (now expected at senior+) and `07-devops-cloud/`.
 
 **Navigation conventions used throughout the guide:**
@@ -107,7 +118,7 @@ A long runway is a gift — it lets you build **durable** knowledge instead of c
 
 ## 5. Suggested Study Plans
 
-> **This file owns the *schedule*** — the time-boxed plans below are canonical. [study-resources.md](study-resources.md) tells you *which* book or platform to plug into each phase; the README's reading order is just the folder sequence. When either mentions weeks, they map onto the phases here.
+> **This file owns the *schedule*** — the time-boxed plans below are canonical and role-agnostic. [STUDY-SCHEDULE.md](../STUDY-SCHEDULE.md) is one concrete 8-week instance of these plans (a specific persona); [HANDS-ON-PROJECTS.md](../HANDS-ON-PROJECTS.md) + the [LEARNING-PROJECTS.md](../LEARNING-PROJECTS.md) curriculum are the *build-it* track that turns reading into running code. [study-resources.md](study-resources.md) says *which* book or platform per phase; the README's reading order is the folder sequence. When any of them mention weeks, they map onto the phases here.
 
 ### 5a. The 12-Week Intensive Plan (~15–20 hrs/week)
 
