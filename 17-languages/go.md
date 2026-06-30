@@ -472,7 +472,7 @@ for i := 0; i < 1000; i++ {
 }
 ```
 
-The race detector has no false positives — if it reports a race, there is one — but it only finds races that actually execute, so run it under realistic load and in CI. It adds ~5–10x CPU and ~2x memory overhead, so it's a testing tool, not a production setting.
+The race detector has no false positives — if it reports a race, there is one — but it only finds races that actually execute, so run it under realistic load and in CI. It slows execution by roughly 2–20x (about 10x is typical) and increases memory usage by ~5–10x, so it's a testing tool, not a production setting.
 
 ### Q25. [Theory] Explain struct embedding and how method promotion works.
 

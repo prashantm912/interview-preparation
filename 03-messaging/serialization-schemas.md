@@ -323,8 +323,8 @@ For Avro (and analogously Protobuf):
 |---|---|---|
 | Add field **with default** | ✅ | ✅ |
 | Add field **without default** | ❌ | ✅ |
-| Remove field **with default** | ✅ | ❌ |
-| Remove field **without default** | ❌ | ❌ |
+| Remove field **with default** | ✅ | ✅ |
+| Remove field **without default** | ✅ | ❌ |
 | Rename field (Avro) | ❌ (use aliases) | ❌ |
 | Widen `int`→`long` | ✅ | ❌ |
 | Narrow `long`→`int` | ❌ | ✅ |

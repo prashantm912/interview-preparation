@@ -529,7 +529,7 @@ cut -c1-8 file                   # first 8 characters of each line
 # sort — order lines
 sort -u names.txt                # sort + dedupe
 sort -t',' -k2 -n data.csv       # by 2nd CSV field, numerically
-sort -k3 -rn -h sizes.txt        # human-numeric reverse (1K < 1M < 1G)
+sort -k3 -rh sizes.txt        # human-numeric reverse (1K < 1M < 1G)
 
 # uniq — collapse ADJACENT duplicates (so sort first!)
 sort log | uniq -c               # count occurrences

@@ -847,7 +847,6 @@ async function drainOutbox() {
   const db = await openDB('outbox-db', 1);
   const tx = db.transaction('requests', 'readwrite');
   const store = tx.objectStore('requests');
-  for (const [key, req] of await store.openCursor() ? [] : []) { /* cursor loop */ }
   let cursor = await store.openCursor();
   while (cursor) {
     try {

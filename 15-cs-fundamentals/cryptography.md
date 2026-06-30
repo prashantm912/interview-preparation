@@ -335,8 +335,8 @@ TLS 1.3 **mandates** forward secrecy — static RSA key exchange was removed ent
 A digital signature is created by **signing a hash of the message with a private key**; anyone can verify it with the corresponding public key.
 
 ```
-Sign:   signature = Encrypt_privateKey( H(message) )
-Verify: H(message) == Decrypt_publicKey( signature ) ?
+Sign:   signature = Sign(privateKey, H(message))
+Verify: Verify(publicKey, message, signature) -> valid / invalid
 ```
 
 Guarantees:
@@ -344,7 +344,7 @@ Guarantees:
 2. **Integrity** — any change to the message changes its hash, breaking verification.
 3. **Non-repudiation** — the signer cannot later deny signing (since only they hold the private key).
 
-Note the direction is opposite to encryption: you sign with the *private* key and verify with the *public* key. Algorithms: RSA-PSS, ECDSA, EdDSA (Ed25519). We sign the hash, not the whole message, for efficiency.
+Note the key roles are reversed from encryption: you sign with the *private* key and verify with the *public* key. Algorithms: RSA-PSS, ECDSA, EdDSA (Ed25519). We sign the hash, not the whole message, for efficiency.
 
 ### Q22. [Theory] What's the difference between a MAC and a digital signature?
 
@@ -941,16 +941,22 @@ The deeper reason it matters: GCM's security degrades sharply if a nonce ever re
 
 ```java
 // DO NOT DO THIS. Illustration of why nonce reuse is fatal in GCM.
-byte[] iv = fixedIv();                // BUG: same IV reused
-Cipher c = Cipher.getInstance("AES/GCM/NoPadding");
+// NOTE: SunJCE blocks reusing the same IV on ONE Cipher instance
+// (throws InvalidAlgorithmParameterException). To actually reproduce the
+// bug we use two separate instances given the SAME iv -- the provider's
+// guard is only per-instance, it cannot stop you reusing a nonce this way.
+byte[] iv = fixedIv();                // BUG: same IV reused across messages
 
-c.init(Cipher.ENCRYPT_MODE, key, new GCMParameterSpec(128, iv));
-byte[] ct1 = c.doFinal(plaintext1);   // keystream Ks XOR plaintext1
+Cipher c1 = Cipher.getInstance("AES/GCM/NoPadding");
+c1.init(Cipher.ENCRYPT_MODE, key, new GCMParameterSpec(128, iv));
+byte[] ct1 = c1.doFinal(plaintext1);  // keystream Ks XOR plaintext1 (+ tag)
 
-c.init(Cipher.ENCRYPT_MODE, key, new GCMParameterSpec(128, iv));
-byte[] ct2 = c.doFinal(plaintext2);   // SAME keystream Ks XOR plaintext2
+Cipher c2 = Cipher.getInstance("AES/GCM/NoPadding");
+c2.init(Cipher.ENCRYPT_MODE, key, new GCMParameterSpec(128, iv));
+byte[] ct2 = c2.doFinal(plaintext2);  // SAME keystream Ks XOR plaintext2 (+ tag)
 
-// Attacker computes:  ct1 XOR ct2  ==  plaintext1 XOR plaintext2
+// Attacker computes (over the ciphertext bodies, excluding the 16-byte tag):
+//   ct1 XOR ct2  ==  plaintext1 XOR plaintext2
 //   -> the keystream cancels out, leaking the XOR of plaintexts.
 // WORSE for GCM: nonce reuse also lets an attacker recover the GHASH
 //   authentication subkey H, enabling FORGERY of arbitrary messages.
@@ -1271,13 +1277,21 @@ record CryptoEnvelope(byte algoId, int keyVersion, byte[] iv, byte[] ciphertext)
         byte[] ct = new byte[buf.remaining()]; buf.get(ct);
 
         SecretKey key = keys.forVersion(keyVersion);     // resolve by version
-        String transform = switch (algoId) {             // resolve by algorithm
-            case ALG_AES256_GCM, ALG_AES256_GCM_SIV -> "AES/GCM/NoPadding";
-            case ALG_CHACHA20_POLY -> "ChaCha20-Poly1305";
+        String transform;                                // resolve transform + params by algorithm
+        AlgorithmParameterSpec params;
+        switch (algoId) {
+            case ALG_AES256_GCM, ALG_AES256_GCM_SIV -> {
+                transform = "AES/GCM/NoPadding";
+                params = new GCMParameterSpec(128, iv);  // 128-bit auth tag
+            }
+            case ALG_CHACHA20_POLY -> {
+                transform = "ChaCha20-Poly1305";
+                params = new IvParameterSpec(iv);        // 12-byte nonce; Poly1305 tag is fixed 128-bit
+            }
             default -> throw new IllegalStateException("unknown algoId " + algoId);
-        };
+        }
         Cipher c = Cipher.getInstance(transform);
-        c.init(Cipher.DECRYPT_MODE, key, new GCMParameterSpec(128, iv));
+        c.init(Cipher.DECRYPT_MODE, key, params);
         return c.doFinal(ct);
     }
 }

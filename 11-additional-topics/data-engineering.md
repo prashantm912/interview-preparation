@@ -1399,9 +1399,10 @@ rules = {
 }
 
 # Build an array of the names of violated rules per row
-violations = F.array_remove(
-    F.array(*[F.when(cond, F.lit(name)) for name, cond in rules.items()]),
-    None,
+# array_remove(array, None) does NOT strip nulls (it returns NULL for the whole array);
+# use array_compact (Spark 3.4+) to drop the nulls left by the un-triggered when() branches.
+violations = F.array_compact(
+    F.array(*[F.when(cond, F.lit(name)) for name, cond in rules.items()])
 )
 
 tagged = df.withColumn("dq_violations", violations)
@@ -1418,7 +1419,7 @@ clean.write.mode("overwrite").parquet("s3://curated/orders/dt=2026-06-30/")
       .groupBy("rule").count().show())
 ```
 
-One pass evaluates every rule, the `array` + `array_remove(..., None)` trick collects only the violated rule names, and the quarantined rows carry *why* they failed — so triage doesn't require re-deriving the cause. The final `explode` + `groupBy` gives per-rule failure counts you can trend and alert on.
+One pass evaluates every rule, the `array` + `array_compact` trick collects only the violated rule names — `when()` yields `NULL` for rules that pass, and `array_compact` drops those nulls (note: `array_remove(arr, None)` would *not* work, since removing a `NULL` element returns `NULL` for the whole array). The quarantined rows carry *why* they failed — so triage doesn't require re-deriving the cause. The final `explode` + `groupBy` gives per-rule failure counts you can trend and alert on.
 
 #### Q98. [Practical] A dbt model that builds a large table is slow and re-runs from scratch every time. How do you make it incremental?
 Convert it to an **incremental materialization** so each run only processes new/changed rows instead of a full rebuild:

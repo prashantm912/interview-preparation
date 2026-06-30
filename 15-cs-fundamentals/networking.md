@@ -88,7 +88,7 @@ The active closer enters **TIME_WAIT** for 2×MSL (Maximum Segment Lifetime, oft
 An **IP address** is a logical, network-layer identifier for a host's interface, used for routing packets across networks.
 
 - **IPv4**: 32-bit, written as four dotted octets (`192.168.1.10`). ~4.3 billion addresses — long exhausted, which is why NAT and CIDR exist.
-- **IPv6**: 128-bit, written as eight hex groups (`2001:0db8:85a3::8a2e:0370:7334`). ~3.4×10³⁸ addresses, so NAT is largely unnecessary; it also has a simpler fixed header, built-in autoconfiguration (SLAAC), and mandatory support for IPsec.
+- **IPv6**: 128-bit, written as eight hex groups (`2001:0db8:85a3::8a2e:0370:7334`). ~3.4×10³⁸ addresses, so NAT is largely unnecessary; it also has a simpler fixed header, built-in autoconfiguration (SLAAC), and recommended (SHOULD, not mandatory) support for IPsec — it was originally mandatory in early IPv6 specs (RFC 4294) but was downgraded to a SHOULD by RFC 6434 / RFC 8504, so "IPsec is mandatory in IPv6" is now an outdated myth.
 
 IPv6 notation allows **zero compression**: a run of all-zero groups collapses to `::` (once per address), and leading zeros in a group are dropped. So `2001:0db8:0000:0000:0000:0000:0000:0001` → `2001:db8::1`. Adoption is mixed; dual-stack (running both) is the common reality in 2026, with most public clouds defaulting to IPv4 for legacy reasons but offering IPv6.
 
@@ -389,7 +389,7 @@ Where flow control protects the *receiver*, **congestion control** protects the 
 
 This is **AIMD** (Additive Increase, Multiplicative Decrease), which is provably fair across competing flows. Loss is treated as a congestion signal.
 
-Modern stacks (Linux default since ~2016) use **CUBIC**, which grows the window as a cubic function of time since the last loss — better for high-speed networks. **BBR** (Google) takes a different tack entirely: it models the bottleneck **B**andwidth and **R**ound-trip propagation time rather than reacting to loss, achieving higher throughput on lossy links (e.g. mobile) and lower buffer bloat.
+Modern stacks (Linux default since kernel 2.6.19, late 2006) use **CUBIC**, which grows the window as a cubic function of time since the last loss — better for high-speed networks. **BBR** (Google) takes a different tack entirely: it models the bottleneck **B**andwidth and **R**ound-trip propagation time rather than reacting to loss, achieving higher throughput on lossy links (e.g. mobile) and lower buffer bloat.
 
 ### Q21. [Theory] What is head-of-line (HOL) blocking, and how does each HTTP version address it?
 
@@ -1468,7 +1468,7 @@ The derivation intuition: AIMD sawtooths the window — it grows by 1 MSS per RT
 The staff-level implications are profound:
 
 - **Throughput is inversely proportional to RTT** — a flow with twice the RTT gets *half* the throughput for the same loss. This is why a far-away server is slow even on a fat pipe, and why CDNs/edge termination matter so much.
-- **Throughput falls as 1/√p** — even tiny loss devastates high-speed flows. To fill a **10 Gbps, 100ms** path with 1500B packets, Reno needs a loss rate around **10⁻⁸** (one packet in a hundred million) — physically unachievable on real links. This single fact is *why* CUBIC and BBR exist: loss-based AIMD simply cannot fill modern long-fat networks.
+- **Throughput falls as 1/√p** — even tiny loss devastates high-speed flows. To fill a **10 Gbps, 100ms** path with 1500B packets, Reno needs a loss rate around **2×10⁻¹⁰** (about one packet in five billion, i.e. a congestion window of ~83,000 segments) — physically unachievable on real links. This single fact is *why* CUBIC and BBR exist: loss-based AIMD simply cannot fill modern long-fat networks.
 
 So when someone asks "why won't my cross-continent transfer go faster?", the Mathis equation is the quantitative answer: RTT and loss, not bandwidth, are the binding constraints — fix them with parallel streams, BBR, larger windows, or moving the endpoints closer.
 

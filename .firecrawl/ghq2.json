@@ -1,0 +1,21 @@
+```java
+public static final LongToken MINIMUM = new LongToken(Long.MIN_VALUE);
+public static final long MAXIMUM = Long.MAX_VALUE;
+```
+
+```java
+private LongToken getToken(ByteBuffer key, long[] hash)
+{
+    if (key.remaining() == 0)
+        return MINIMUM;
+    return new LongToken(normalize(hash[0]));
+}
+```
+
+```java
+private long normalize(long v)
+{
+    // We exclude the MINIMUM value; see getToken()
+    return v == Long.MIN_VALUE ? Long.MAX_VALUE : v;
+}
+```

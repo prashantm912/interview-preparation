@@ -1,0 +1,5 @@
+The value of MINIMUM token is Long.MIN_VALUE.
+
+The getToken/normalize logic states: "We exclude the MINIMUM value; see getToken()". It then implements this as: "returnv == Long.MIN_VALUE ? Long.MAX_VALUE : v;".
+
+The usable token range is (Long.MIN_VALUE, Long.MAX_VALUE].

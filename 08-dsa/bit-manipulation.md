@@ -3195,17 +3195,16 @@ public class KthSetBit {
 ```java
 public class MaxAfterOneBitSwap {
     public static int maximize(int n) {
-        for (int i = 31; i >= 1; i--) {
+        for (int i = 30; i >= 1; i--) {                  // skip sign bit 31; inputs are non-negative
             if (((n >> i) & 1) == 0) {                   // a 0 we'd like to turn into 1
-                for (int j = i - 1; j >= 0; j--) {
-                    if (((n >> j) & 1) == 1) {           // highest 1 below it
-                        return n | (1 << i);             // set the high 0
-                        // (its value strictly increases; lower 1 is implicitly "moved")
+                for (int j = 0; j < i; j++) {            // lowest 1 below it loses the least value
+                    if (((n >> j) & 1) == 1) {
+                        return (n | (1 << i)) & ~(1 << j);  // set the high 0, clear that 1 (a true swap)
                     }
                 }
             }
         }
-        return n;                                        // already all leading ones
+        return n;                                        // already maximal (ones packed at the top)
     }
 }
 ```

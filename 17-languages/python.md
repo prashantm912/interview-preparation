@@ -2340,7 +2340,7 @@ if __name__ == "__main__":      # REQUIRED on Windows/spawn — guards re-import
     main()
 ```
 
-Why a **process** pool, not threads: CPU-bound pure-Python work is serialized by the GIL, so threads give no speedup — separate processes each have their own interpreter and run truly in parallel. Caveats: the function and its arguments must be **picklable** (a top-level function, not a lambda or closure); there is per-task IPC overhead, so batch small tasks (use `chunksize`) rather than dispatching millions of tiny ones; and the `if __name__ == "__main__":` guard is mandatory under the `spawn` start method (Windows and, since 3.14, the default elsewhere) to avoid recursively spawning the whole program.
+Why a **process** pool, not threads: CPU-bound pure-Python work is serialized by the GIL, so threads give no speedup — separate processes each have their own interpreter and run truly in parallel. Caveats: the function and its arguments must be **picklable** (a top-level function, not a lambda or closure); there is per-task IPC overhead, so batch small tasks (use `chunksize`) rather than dispatching millions of tiny ones; and the `if __name__ == "__main__":` guard is mandatory under any non-fork start method — `spawn` (Windows and macOS) and `forkserver` (the new Linux default since 3.14, replacing `fork`) — to avoid recursively spawning the whole program.
 
 #### Q109. [Practical] A teammate's f-string logging is flagged in review: `logger.info(f"processing {expensive()}")`. Why, and what's the fix?
 

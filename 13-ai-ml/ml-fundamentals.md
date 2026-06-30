@@ -722,7 +722,7 @@ Fix it with a **post-hoc** mapping fit on a held-out set:
 
 ```python
 from sklearn.calibration import CalibratedClassifierCV
-calibrated = CalibratedClassifierCV(base_estimator, method="isotonic", cv=5)
+calibrated = CalibratedClassifierCV(estimator, method="isotonic", cv=5)
 calibrated.fit(X_train, y_train)   # probabilities now match observed frequencies
 ```
 
@@ -846,7 +846,7 @@ The theme: **offline metrics are a proxy**; the strategy must connect them to li
 
 ### Q45. [Theory] Discuss double descent and how it reconciles classic bias-variance with modern over-parameterized models.
 
-Classical theory predicts a **U-shaped** test-error curve: increasing capacity past a point overfits and test error rises. Yet huge over-parameterized models (random forests with many trees, wide neural nets) often generalize well despite interpolating the training data. **Double descent** reconciles this:
+Classical theory predicts a **U-shaped** test-error curve: increasing capacity past a point overfits and test error rises. Yet huge over-parameterized models (wide/deep neural nets, large random-feature or high-degree polynomial models) often generalize well despite interpolating the training data. **Double descent** reconciles this:
 
 ```text
 test

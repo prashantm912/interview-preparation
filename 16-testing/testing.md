@@ -1436,7 +1436,11 @@ Resilience code only earns its keep under failure, so you must **inject the fail
 void circuitOpensAfterFailureThresholdThenShortCircuits() {
     // Arrange a breaker: open after 50% failures in a window of 4
     CircuitBreaker cb = CircuitBreaker.of("svc", CircuitBreakerConfig.custom()
-        .slidingWindowSize(4).failureRateThreshold(50).build());
+        .slidingWindowType(SlidingWindowType.COUNT_BASED)
+        .slidingWindowSize(4)
+        .minimumNumberOfCalls(4)        // default is 100 — without this the rate is never evaluated, so 4 calls leave the breaker CLOSED
+        .failureRateThreshold(50)
+        .build());
     when(client.call()).thenThrow(new TimeoutException());
 
     // Drive it to the threshold
@@ -1690,7 +1694,7 @@ Asserting on `hasCauseInstanceOf` matters when your code wraps a low-level excep
 
 #### Q84. [Practical] A test calls a method that returns `Optional<User>` and you keep getting a `NoSuchElementException` in the test. What's the idiomatic fix?
 
-The test is calling `.get()` on an empty `Optional` — usually because the stub returns `Optional.empty()` (the default for an unstubbed method that returns `Optional` is actually `Optional.empty()`, not `null`, but only if the mock is set up to return it; an unstubbed plain mock returns `null` for `Optional` unless `RETURNS_DEFAULTS` is configured). Two things to fix:
+The test is calling `.get()` on an empty `Optional` — usually because the stub returns `Optional.empty()` (an unstubbed Mockito mock returns `Optional.empty()` — not `null` — for any method whose return type is `Optional`, because the default answer `RETURNS_DEFAULTS`/`ReturnsEmptyValues` special-cases `Optional`; this is the out-of-the-box behavior, nothing needs to be configured). Two things to fix:
 
 1. **Stub it to return a present Optional** when the test expects a hit:
 

@@ -312,11 +312,11 @@ Schema validation is a lightweight form of contract testing: it pins the respons
 
 ### Q15. [Practical] How do you validate a response against a JSON Schema in REST Assured?
 
-REST Assured ships a `json-schema-validator` module backed by the `networknt`/`everit` validators. Put the schema on the classpath and use the `matchesJsonSchemaInClasspath` matcher.
+REST Assured's `json-schema-validator` module is backed by Francis Galiegue's `fge` json-schema-validator (`com.github.fge`), which validates only against JSON Schema draft-03/draft-04 (default draft-04) — it does not honor the draft 2020-12 dialect. Put the schema on the classpath and use the `matchesJsonSchemaInClasspath` matcher. Because the schema above declares `draft/2020-12`, the default fge backend will not enforce 2020-12 semantics; for genuine draft 2019-09/2020-12 validation, swap in the `networknt` json-schema-validator (e.g. via a custom `JsonSchemaFactory` passed to `.using(...)`) or use a different tool such as swagger-request-validator or networknt directly.
 
 ```java
 import static io.restassured.RestAssured.given;
-import static io.restassured.module.jsonschema.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 @Test
 void userResponseMatchesSchema() {
