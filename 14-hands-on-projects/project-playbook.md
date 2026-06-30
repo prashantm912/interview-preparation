@@ -1,5 +1,5 @@
 # Project Playbook — How to Work Any of the 110 Projects Yourself
-**Your "teach me to fish" guide.** This is the *method* you run for every project in `LEARNING-PROJECTS.md`, so you can derive the full plan from a 3-line description on your own. Pair it with `PROJECT-BRIEFS.md` (the answer key) — work a project from this playbook first, then check yourself against the brief.
+**Your "teach me to fish" guide.** This is the *method* you run for every project in `14-hands-on-projects/learning-projects.md`, so you can derive the full plan from a 3-line description on your own. Pair it with `14-hands-on-projects/project-briefs.md` (the answer key) — work a project from this playbook first, then check yourself against the brief.
 
 ---
 
@@ -18,7 +18,7 @@ A project's 3 lines (`Teaches / Build / Aha`) are a **pointer, not a spec.** You
    - Nouns = the things you must model (Topic, Partition, Offset…).
    - Verbs = the API you must expose (produce, fetch, commit…).
    - **Those nouns and verbs ARE your spec.** You copy the real vocabulary; you don't invent it.
-3. **Find ONE explainer** — the References appendix in `LEARNING-PROJECTS.md`, or google `"build your own <X>"` / `"<X> explained"`. Skim for the *core idea*.
+3. **Find ONE explainer** — the References appendix in `14-hands-on-projects/learning-projects.md`, or google `"build your own <X>"` / `"<X> explained"`. Skim for the *core idea*.
 4. **Write the Aha in your own words.** If you can't, read 30 more minutes — you're not ready to build yet.
 5. **List every noun/verb you don't understand** → that's your **prerequisite list** (next section).
 6. **Stop researching. Build the naive version.** Recon is capped at ~1 hr; the rest you learn by building.
@@ -31,7 +31,7 @@ When you do this, the nouns basically *hand you the milestones* — "one milesto
 
 Two kinds, found two ways:
 
-- **Between-project prerequisites → already solved by the Master Sequence** in `LEARNING-PROJECTS.md`. The order *is* the prereq map (P3 before P69; P52→P53 before P54). Just follow it.
+- **Between-project prerequisites → already solved by the Master Sequence** in `14-hands-on-projects/learning-projects.md`. The order *is* the prereq map (P3 before P69; P52→P53 before P54). Just follow it.
 - **Within-project prerequisites → discovered in recon step 5, learned just-in-time.** Hit a noun you don't get ("what's an fsync? a CRC?")? Learn *just enough to proceed* — 15 min, not a course — then continue. **Just-in-time, never just-in-case.**
 
 **"Am I in over my head?" signal:** if recon leaves you not understanding **more than half** the nouns, the project is too far ahead — drop back to an easier one in that track first.
@@ -63,7 +63,7 @@ Two kinds, found two ways:
 
 ## The project brief template (fill this in yourself per project)
 
-Copy this, fill it during recon + acceptance (steps 2–3). This is exactly the shape of every entry in `PROJECT-BRIEFS.md`.
+Copy this, fill it during recon + acceptance (steps 2–3). This is exactly the shape of every entry in `14-hands-on-projects/project-briefs.md`.
 
 ```
 ### Pn · <Title>   [effort]
@@ -114,7 +114,7 @@ You're done when you can answer all four **without notes**:
 If all four are crisp → commit, write them into a `NOTES.md`, move on. If any is fuzzy → that's exactly the part you don't understand yet; go back to it. **Don't gold-plate** — you're learning the idea, not shipping the product.
 
 ### Cross-checking against the answer key
-After your own pass, open the matching entry in `PROJECT-BRIEFS.md` and compare: Did you miss a milestone? A failure mode? A trade-off? Differences are learning, not failure — note what you'd do better and move on. **Read the brief *after* your attempt, not before** — pre-reading robs you of the deduction practice that is the whole point.
+After your own pass, open the matching entry in `14-hands-on-projects/project-briefs.md` and compare: Did you miss a milestone? A failure mode? A trade-off? Differences are learning, not failure — note what you'd do better and move on. **Read the brief *after* your attempt, not before** — pre-reading robs you of the deduction practice that is the whole point.
 
 ---
 
@@ -132,4 +132,4 @@ mini-<project>/
 
 ---
 
-**Method over memorization. Run the recon recipe + 9-step loop on each project, verify at all three levels, then check yourself against `PROJECT-BRIEFS.md`. Do that ~40 times and you won't just pass interviews — you'll have rebuilt the internals you spent 15 years above.**
+**Method over memorization. Run the recon recipe + 9-step loop on each project, verify at all three levels, then check yourself against `14-hands-on-projects/project-briefs.md`. Do that ~40 times and you won't just pass interviews — you'll have rebuilt the internals you spent 15 years above.**

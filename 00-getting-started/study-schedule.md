@@ -11,10 +11,10 @@
 **Total:** ~56–64 hours, ~1.5 hrs/day. **Pairs with 3–4 lunch-break slots for system design sketches.**
 
 > **Companion docs:**
-> - `RAG-MINI-PROJECT-JAVA.md` — the Week 5 AI/ML build, in Java + Spring Boot + LangChain4j (use this; the Python version is `RAG-MINI-PROJECT.md`).
-> - `HANDS-ON-PROJECTS.md` — Java build projects for system design, DSA, and architecture, with a week-by-week integration table. Pick ~5–6 weighted to your gaps and slot them into the weeks below.
-> - `LEARNING-PROJECTS.md` — **~110 ground-up "build X from scratch to understand Y" projects** across 13 tracks (foundations, concurrency, DS, DB internals, networking, distributed systems, caching, messaging, architecture, observability, security, performance, AI/ML). This is the long-game *learning* curriculum (6–18 months), separate from this 8-week interview sprint — use it to close real internals gaps, not to cram.
-> - `BICEP-INTERVIEW-GUIDE.md` — closes your IaC gap.
+> - `13-ai-ml/rag-mini-project-java.md` — the Week 5 AI/ML build, in Java + Spring Boot + LangChain4j (use this; the Python version is `13-ai-ml/rag-mini-project.md`).
+> - `14-hands-on-projects/hands-on-projects.md` — Java build projects for system design, DSA, and architecture, with a week-by-week integration table. Pick ~5–6 weighted to your gaps and slot them into the weeks below.
+> - `14-hands-on-projects/learning-projects.md` — **~110 ground-up "build X from scratch to understand Y" projects** across 13 tracks (foundations, concurrency, DS, DB internals, networking, distributed systems, caching, messaging, architecture, observability, security, performance, AI/ML). This is the long-game *learning* curriculum (6–18 months), separate from this 8-week interview sprint — use it to close real internals gaps, not to cram.
+> - `07-devops-cloud/bicep.md` — closes your IaC gap.
 
 ---
 

@@ -1,5 +1,5 @@
 # Project Briefs — Answer Key for All 110 Projects
-**Use this AFTER your own attempt, not before.** Each brief is the worked spec you'd produce by running `PROJECT-PLAYBOOK.md` (recon → spec → milestones → acceptance → break-it → compare → gate). Build the project from the 3-line description in `LEARNING-PROJECTS.md` first; *then* open the matching brief here to check what you missed. Reading it first robs you of the deduction practice that is the whole point.
+**Use this AFTER your own attempt, not before.** Each brief is the worked spec you'd produce by running `14-hands-on-projects/project-playbook.md` (recon → spec → milestones → acceptance → break-it → compare → gate). Build the project from the 3-line description in `14-hands-on-projects/learning-projects.md` first; *then* open the matching brief here to check what you missed. Reading it first robs you of the deduction practice that is the whole point.
 
 **Legend:** 🟢 hours · 🟡 1–2 days · 🟠 3–5 days · 🔴 1–2 weeks. All Java.
 
@@ -1269,4 +1269,4 @@
 
 ---
 
-*All 110 briefs complete (P1–P110). Work each project from `LEARNING-PROJECTS.md` using `PROJECT-PLAYBOOK.md`, then check yourself here.*
+*All 110 briefs complete (P1–P110). Work each project from `14-hands-on-projects/learning-projects.md` using `14-hands-on-projects/project-playbook.md`, then check yourself here.*

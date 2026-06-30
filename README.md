@@ -26,11 +26,11 @@ This guide is built to be your **primary interview-prep resource for 6–12 mont
 | [How to Use This Guide & Study Plan](00-getting-started/how-to-use.md) | Executive summary, navigation, and 12-week / 6-month study plans |
 | [Interview Tips by Experience Level](00-getting-started/interview-tips-by-level.md) | What interviewers expect at each level, answer frameworks, common mistakes, demonstrating leadership |
 | [Study Resources & Recommendations](00-getting-started/study-resources.md) | Curated books, courses, and practice platforms by topic |
-| [8-Week Interview Sprint Schedule](STUDY-SCHEDULE.md) | A concrete day-by-day 8-week plan — a worked instance of the study plans (60% system design, plus AI/ML & behavioral) |
-| [Hands-On Build Projects (Java)](HANDS-ON-PROJECTS.md) | Build projects that turn guide reading into running code; pick 5–6 by weak spot |
-| [Ground-Up Learning Projects (~110)](LEARNING-PROJECTS.md) | Long-game "build X from scratch to understand Y" curriculum — pair with [Playbook](PROJECT-PLAYBOOK.md) (method) + [Briefs](PROJECT-BRIEFS.md) (answer key) |
-| [RAG Mini-Project](RAG-MINI-PROJECT-JAVA.md) | Hands-on AI/ML build (Java/LangChain4j; [Python version](RAG-MINI-PROJECT.md)) — applied companion to the AI/ML section |
-| [Bicep / IaC Interview Guide](BICEP-INTERVIEW-GUIDE.md) | Azure Bicep + IaC gap-closer; pairs with the Terraform / DevOps section |
+| [8-Week Interview Sprint Schedule](00-getting-started/study-schedule.md) | A concrete day-by-day 8-week plan — a worked instance of the study plans (60% system design, plus AI/ML & behavioral) |
+| [Hands-On Build Projects (Java)](14-hands-on-projects/hands-on-projects.md) | Build projects that turn guide reading into running code; pick 5–6 by weak spot |
+| [Ground-Up Learning Projects (~110)](14-hands-on-projects/learning-projects.md) | Long-game "build X from scratch to understand Y" curriculum — pair with [Playbook](14-hands-on-projects/project-playbook.md) (method) + [Briefs](14-hands-on-projects/project-briefs.md) (answer key) |
+| [RAG Mini-Project](13-ai-ml/rag-mini-project-java.md) | Hands-on AI/ML build (Java/LangChain4j; [Python version](13-ai-ml/rag-mini-project.md)) — applied companion to the AI/ML section |
+| [Bicep / IaC Interview Guide](07-devops-cloud/bicep.md) | Azure Bicep + IaC gap-closer; pairs with the Terraform / DevOps section |
 
 ---
 

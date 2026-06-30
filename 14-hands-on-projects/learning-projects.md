@@ -539,7 +539,7 @@ The deepest learning comes from carrying **one system through many tracks** inst
 5. **P89/P90** add circuit breaking + load shedding (reliability) →
 6. **P86/P87** instrument with metrics + tracing (observability) →
 7. **P79** front it with an API gateway (architecture) →
-8. ship it to **Azure via Bicep + GitHub Actions** (see `BICEP-INTERVIEW-GUIDE.md`).
+8. ship it to **Azure via Bicep + GitHub Actions** (see `07-devops-cloud/bicep.md`).
 
 When you've done that, you won't be "a developer who used Kafka" — you'll be an engineer who **rebuilt Kafka's core ideas** and can reason about any distributed system from first principles. That is the gap you described, closed.
 
@@ -560,7 +560,7 @@ Each capstone stage also has **smaller prerequisite projects** — do those firs
 | 5 | **P18** → **P89** → **P90** | 2 (concurrency), 10 (reliability) | P18, P89, P90 | semaphore/bulkhead is the building block for breaker + load shedding |
 | 6 | **P86** → **P87** | 10 (observability) | P86, P87 | metrics before tracing (simpler first) |
 | 7 | **P93** + **P18** → **P79** | 11 (security), 9 (architecture) | P93, P79 | gateway = auth (JWT) + rate limit (semaphore) + routing combined |
-| 8 | Bicep + GitHub Actions deploy | DevOps | `BICEP-INTERVIEW-GUIDE.md` | ship the finished system to Azure |
+| 8 | Bicep + GitHub Actions deploy | DevOps | `07-devops-cloud/bicep.md` | ship the finished system to Azure |
 
 **Dependency at a glance:**
 
@@ -607,7 +607,7 @@ Each is its own "build one system" spine, like the broker. `*` = shared with the
 | **Mini-Dynamo** (distributed KV) | an eventually-consistent KV store | P31 → P52\* → P50 → P51 → P57 → P55 → P58 → P30 → P59 → P62 → P63 → **P60** | 6 (+5, 7) |
 | **Event-driven platform** (order system) | sagas + streaming on the broker | (needs P69\*) → P70 → P74 → P75 → P72 → P73 → P71 → P76 → P77 | 8 (+9) |
 | **Observability platform** | a monitoring/reliability stack | P86\* → P87\* → P88 → P89\* → P90\* → P91 → P92 | 10 |
-| **AI/RAG system** | retrieval chatbot + ops | `RAG-MINI-PROJECT-JAVA.md` → P106 → P107 → P108 → P109 → P110 | 13 |
+| **AI/RAG system** | retrieval chatbot + ops | `13-ai-ml/rag-mini-project-java.md` → P106 → P107 → P108 → P109 → P110 | 13 |
 
 > Pick **one** mini-capstone matching your weakest area on top of the broker. Mini-database closes "the DB is a black box"; mini-Dynamo closes "distributed systems are hand-wavy"; event-driven closes "I copy Kafka/saga patterns I don't grasp."
 
@@ -658,7 +658,7 @@ One end-to-end order: the 6 capstones in sequence (prerequisites woven in where 
 | 16 | P87 | Distributed tracing | 🟠 | **core** |
 | 17 | P93 | JWT sign/verify | 🟡 | prereq (gateway) |
 | 18 | P79 | API gateway | 🟠 | **core** |
-| — | — | *Deploy to Azure (Bicep + GitHub Actions)* | — | see `BICEP-INTERVIEW-GUIDE.md` |
+| — | — | *Deploy to Azure (Bicep + GitHub Actions)* | — | see `07-devops-cloud/bicep.md` |
 
 ### Capstone 2 — Mini-database *(reuses P19, P23, P33, P35)*
 | # | Proj | Title | Effort | Role |
@@ -708,7 +708,7 @@ One end-to-end order: the 6 capstones in sequence (prerequisites woven in where 
 | 49 | P91 | Chaos-injection tool | 🟡 | **core** |
 | 50 | P92 | SLO + error-budget alerting | 🟢 | **CAPSTONE** |
 
-### Capstone 6 — AI/RAG system *(anchor: `RAG-MINI-PROJECT-JAVA.md`)*
+### Capstone 6 — AI/RAG system *(anchor: `13-ai-ml/rag-mini-project-java.md`)*
 | # | Proj | Title | Effort | Role |
 |---|---|---|---|---|
 | 51 | P106 | Vector similarity search (HNSW) | 🟡 | **core** |

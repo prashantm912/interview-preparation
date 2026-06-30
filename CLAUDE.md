@@ -1,11 +1,12 @@
 # Interview Preparation Guide — Claude Context
 
-Content-only repo. No build, no tests. 129 markdown docs across 14 numbered sections.
+Content-only repo. No build, no tests. 140 markdown docs across 15 numbered sections (00–14).
 
 ## Layout
-- `00-getting-started/` … `13-ai-ml/` — topic sections
+- `00-getting-started/` … `13-ai-ml/` — topic sections (`00-getting-started/` also holds `study-schedule.md`; the two `rag-mini-project*.md` builds live in `13-ai-ml/`; `bicep.md` in `07-devops-cloud/`)
 - `08-dsa/` — DSA problems (Java solutions)
 - `09-system-design/` + `09-system-design/design-problems/` — case studies
+- `14-hands-on-projects/` — build curriculum (hands-on-projects, learning-projects, project-playbook, project-briefs)
 - `README.md` — generated TOC with per-file counts; don't hand-edit count cells
 
 ## Three doc formats

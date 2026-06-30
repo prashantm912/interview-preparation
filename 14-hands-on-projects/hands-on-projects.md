@@ -152,7 +152,7 @@ This is where a 15-yr profile wins. These map to `02-microservices/`, `11-additi
 **Interview payoff:** This is advanced architecture — having built even a slice signals depth.
 
 ### C5. 🟡 Deploy to Azure with Bicep + GitHub Actions (your full DevOps stack)
-**Maps to:** `BICEP-INTERVIEW-GUIDE.md` · `07-devops-cloud/azure.md` · `github-actions.md`
+**Maps to:** `07-devops-cloud/bicep.md` · `07-devops-cloud/azure.md` · `github-actions.md`
 **Build:** Take ANY service above and ship it.
 - **Bicep** templates: App Service / Container App + Postgres + Redis + Key Vault
 - **GitHub Actions** pipeline: build → test → `az deployment group create`
@@ -173,7 +173,7 @@ You don't do all of them. Pick ~5–6 weighted to your gaps. Suggested integrati
 | 1–2 | SD fundamentals | **B1** (start DSA repo, ongoing) + **A1** rate limiter (🟢 weekend) |
 | 3 | SD case studies | **A2** chat backend (🟡, aligns with chat-system.md) |
 | 4 | SD case studies + reliability | **C1** resilient microservices (🟡) |
-| 5 | AI/ML | **RAG-MINI-PROJECT-JAVA** (the LLM build) |
+| 5 | AI/ML | **RAG mini-project** (`13-ai-ml/rag-mini-project-java.md`, the LLM build) |
 | 6 | AI/ML + patterns | **C3** observability (🟠, uses your Prometheus skills) |
 | 7 | Additional topics | **C5** Azure/Bicep deploy (🟡) — ship something from earlier |
 | 8 | Polish + mocks | **B2** finish data-structure library; mock interviews |
