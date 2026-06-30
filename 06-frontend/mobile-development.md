@@ -335,7 +335,7 @@ The payoff is lower latency, less serialization overhead, synchronous calls wher
 
 - **Fabric** is the new **renderer**. The UI tree (the "shadow tree") is built and laid out in **shared C++**, and the host views are created on the native side from it. Because the tree lives in C++ and is reachable synchronously, Fabric supports **concurrent rendering** (React 18 features like `Suspense`/transitions), consistent measurement, and faster updates than the old async UIManager.
 
-Together they replace the bridge: TurboModules for **native-to-JS function calls**, Fabric for **rendering the UI tree**.
+Together they replace the bridge: TurboModules for **JavaScript-to-native function calls** (JS invoking native modules via JSI), Fabric for **rendering the UI tree**.
 
 ### Q19. [Theory] How does Flutter render UI, and what is the widget tree?
 

@@ -2352,7 +2352,7 @@ struct Good {
 
 struct Risky {
     std::vector<int> v_;
-    Risky(Risky&& o) noexcept(false) : v_(std::move(o.v_)) {}  // honest if you fear throwing; here move is actually noexcept
+    Risky(Risky&& o) noexcept : v_(std::move(o.v_)) {}  // vector's move is a pointer steal: provably cannot throw, so noexcept is the honest annotation
 };
 ```
 

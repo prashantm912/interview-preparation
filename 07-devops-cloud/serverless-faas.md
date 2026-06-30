@@ -277,7 +277,7 @@ The catch is cost: you pay an hourly rate for each provisioned environment regar
 
 ### Q18. [Theory] What is Lambda SnapStart and how does it help Java?
 
-SnapStart attacks Java cold starts by taking a **Firecrawl micro-VM snapshot** of the fully initialized environment after INIT, then restoring from that snapshot on future cold starts instead of re-running the JVM boot and init code.
+SnapStart attacks Java cold starts by taking a **Firecracker micro-VM snapshot** of the fully initialized environment after INIT, then restoring from that snapshot on future cold starts instead of re-running the JVM boot and init code.
 
 ```
 Without SnapStart:  [JVM boot][class load][static init][handler]  ← per cold start

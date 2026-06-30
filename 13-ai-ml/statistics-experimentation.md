@@ -370,7 +370,7 @@ def sample_size_per_group(p_baseline, mde_relative, alpha=0.05, power=0.80):
 
 n = sample_size_per_group(p_baseline=0.10, mde_relative=0.05)   # detect a 5% rel. lift on a 10% base
 print(f"Need ~{n:,} users per group (~{2*n:,} total)")
-# Need ~31,234 users per group (~62,468 total)
+# Need ~57,763 users per group (~115,526 total)
 ```
 
 Plug in your daily eligible traffic to convert that into experiment **duration**, then round *up* to whole business cycles (weeks) to avoid day-of-week bias.
@@ -450,7 +450,7 @@ for p, b, h in zip(p_values, rej_bonf, rej_bh):
 ```text
 p=0.001   Bonferroni reject=True   BH reject=True
 p=0.012   Bonferroni reject=False  BH reject=True
-p=0.03    Bonferroni reject=False  BH reject=True
+p=0.03    Bonferroni reject=False  BH reject=False
 ...
 ```
 
@@ -1310,7 +1310,7 @@ def two_prop_test(c_conv, c_n, t_conv, t_n, alpha=0.05):
     return ABResult(diff, diff/pc, (diff-crit*se_ci, diff+crit*se_ci), p, p < alpha)
 
 print(two_prop_test(c_conv=800, c_n=20_000, t_conv=880, t_n=20_000))
-# lift_abs≈0.004 (0.4pp), lift_rel≈0.10, CI excludes 0, p≈0.006, significant=True
+# lift_abs≈0.004 (0.4pp), lift_rel≈0.10, CI excludes 0 (just barely), p≈0.046, significant=True
 ```
 
 Note the deliberate detail: the **CI uses unpooled** SE (estimating each rate separately) while the **test statistic uses pooled** SE (under H₀ the rates are equal). Mixing these up is a common subtle bug.
@@ -1598,7 +1598,7 @@ def runtime_days(p_baseline, mde_rel, daily_eligible, n_arms=2,
     }
 
 print(runtime_days(p_baseline=0.10, mde_rel=0.05, daily_eligible=8000))
-# raw ~7.8 days -> rounds up to 2 full weeks for clean weekly cycles
+# raw ~14.4 days -> rounds up to 3 full weeks for clean weekly cycles
 ```
 
 Rounding *up to whole weeks* (not just to the raw day count) is the practical detail that keeps every weekday equally represented and avoids day-of-week bias in the final read.

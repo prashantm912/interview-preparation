@@ -237,7 +237,7 @@ class Solution {
 class Solution {
     public java.util.List<Integer> findAll(String text, String pattern) {
         int m = pattern.length();
-        String combo = pattern + "" + text;
+        String combo = pattern + "#" + text;
         int n = combo.length();
         int[] z = new int[n];
         int l = 0, r = 0;
@@ -1094,13 +1094,14 @@ class LongestRepeated {
 ```java
 class LCSofTwo {
     public String longest(String a, String b) {
-        String s = a + "" + b;
-        int sep = a.length();
+        String s = a + "#" + b;          // separator absent from both strings
+        int sep = a.length();            // index of the separator character
         int n = s.length();
         int[] sa = new SuffixArray().build(s);
         int[] lcp = new Kasai().buildLCP(s, sa);
         int best = 0, idx = 0;
         for (int i = 1; i < n; i++) {
+            if (sa[i] == sep || sa[i - 1] == sep) continue; // skip the separator suffix
             boolean diffSides = (sa[i] < sep) != (sa[i - 1] < sep);
             if (diffSides && lcp[i] > best) { best = lcp[i]; idx = sa[i]; }
         }
@@ -3175,7 +3176,7 @@ class RepeatedStringMatch {
 ```java
 class ShortestSuperstringTwo {
     private int overlap(String a, String b) {       // longest suffix of a that is prefix of b
-        String combo = b + "" + a;
+        String combo = b + "#" + a;
         int[] pi = new int[combo.length()];
         for (int i = 1; i < combo.length(); i++) {
             int k = pi[i - 1];

@@ -1240,7 +1240,9 @@ The dividing line is statement vs expression. Used for its side effects (stateme
 A smart cast is permitted only when the compiler can prove the value cannot change between the type/null check and its use — the property must be **stable**. The stability rules: local `val`s are always stable; `val`s with no custom getter from the same module are stable; `var`s, `open`/custom-getter properties, and properties from other modules are *not* stable (their value could differ on the next read).
 
 ```kotlin
-class Box(val ro: String?, var rw: String?, val open: String? get() = field)
+class Box(val ro: String?, var rw: String?) {
+    val open: String? get() = ro
+}
 
 fun f(b: Box) {
     if (b.ro != null) b.ro.length        // OK — stable val

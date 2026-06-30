@@ -591,7 +591,7 @@ public class PointInConvex {
     public static boolean inside(long px, long py, long[] xs, long[] ys) {
         int n = xs.length;
         // p must be left of edge 0->1 and right of edge 0->(n-1).
-        if (cross(xs, ys, 0, 1, 0) == 0) return false; // degenerate guard
+        if (cross(xs, ys, 0, 1, n - 1) == 0) return false; // degenerate guard
         long c1 = (xs[1] - xs[0]) * (py - ys[0]) - (ys[1] - ys[0]) * (px - xs[0]);
         long c2 = (xs[n - 1] - xs[0]) * (py - ys[0]) - (ys[n - 1] - ys[0]) * (px - xs[0]);
         if (c1 < 0 || c2 > 0) return false;
@@ -2693,7 +2693,7 @@ public class RectangleUnion {
             if (ys[r]<=yl || yr<=ys[l]) return;
             if (yl<=ys[l] && ys[r]<=yr){ cnt[node]+=d; pull(node,l,r); return; }
             int m=(l+r)/2;
-            upd(2*node,l,m,yl,yr,d); upd(2*node+1,m+1,r,yl,yr,d);
+            upd(2*node,l,m,yl,yr,d); upd(2*node+1,m,r,yl,yr,d);
             pull(node,l,r);
         }
         void pull(int node,int l,int r){

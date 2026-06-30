@@ -195,7 +195,7 @@ val result =
   yield x + y
 // desugars to:
 List(1, 2).flatMap(x => List(10, 20).withFilter(y => x + y > 12).map(y => x + y))
-// result: List(21, 22, 12 filtered..., 22) -> List(21, 22, 21->? ) i.e. List(21, 22, 22)
+// result: List(21, 22)   ((1,20)->21 and (2,20)->22 satisfy x+y>12; 11 and 12 are filtered out)
 ```
 
 Rule of thumb: a single generator with `yield` becomes `map`; multiple generators chain `flatMap` ending in `map`; an `if` becomes `withFilter`; no `yield` becomes `foreach`. This one construct unifies "loops," monadic chaining, and parallel composition.
@@ -1354,15 +1354,18 @@ val xs = List(1, 2, 3, 4)
 xs.foldLeft(0)(_ - _)   // ((((0-1)-2)-3)-4) = -10   left-associated, tail-recursive (loop)
 xs.foldRight(0)(_ - _)  // (1-(2-(3-(4-0)))) =  -2   right-associated
 
-// foldRight on a long List can overflow the stack (it recurses to the end first):
-// List.range(1, 1000000).foldRight(0)(_ + _)   // risk of StackOverflowError on List
+// On Scala 2.13+/Scala 3, immutable.List overrides foldRight to be stack-safe
+// (it reverses internally, then iterates) — so this does NOT overflow:
+// List.range(1, 1000000).foldRight(0)(_ + _)   // OK on List, no StackOverflowError
+// A naive hand-written right fold (or a strict structure lacking that override)
+// is what actually risks StackOverflowError.
 
 // foldRight is the natural builder for lazy/short-circuiting structures:
 def takeWhilePos(xs: List[Int]): List[Int] =
   xs.foldRight(List.empty[Int])((x, acc) => if x > 0 then x :: acc else Nil)
 ```
 
-`foldLeft` processes front-to-back, threads an accumulator, and the compiler turns it into a tight loop — stack-safe and the default choice. `foldRight` processes conceptually back-to-front (right-associated); on a strict `List` it must recurse to the end, so it can overflow the stack for large inputs (Scala's `List.foldRight` mitigates by reversing internally, but the associativity semantics still differ). `foldRight` shines when the combining function is lazy in its second argument (as with `LazyList`), enabling short-circuiting and even infinite-structure folds. Rule: reach for `foldLeft` by default; use `foldRight` when right-associativity or laziness is semantically required.
+`foldLeft` processes front-to-back, threads an accumulator, and the compiler turns it into a tight loop — stack-safe and the default choice. `foldRight` processes conceptually back-to-front (right-associated). For `immutable.List` it is stack-safe: the standard library overrides `List.foldRight` to reverse the list and then iterate (effectively `reverse.foldLeft`), so even a million-element `List` won't overflow. The stack-overflow risk people associate with right folds applies to a naive recursive right fold (or strict structures without that override), not to `List.foldRight` itself — though the right-associated *semantics* still differ from `foldLeft`. `foldRight` shines when the combining function is lazy in its second argument (as with `LazyList`), enabling short-circuiting and even infinite-structure folds. Rule: reach for `foldLeft` by default; use `foldRight` when right-associativity or laziness is semantically required.
 
 ### 🟠 — extended
 

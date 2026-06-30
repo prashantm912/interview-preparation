@@ -90,7 +90,7 @@ All three describe *how much* a quantifier tries to consume:
 Input:  <a><b>
 <.+>   greedy   → matches the WHOLE "<a><b>"  (grabs all, backtracks to last >)
 <.+?>  lazy     → matches "<a>"               (stops at first >)
-<.++>  possessive → matches the WHOLE "<a><b>" but won't give back; here it works
+<.++>  possessive → FAILS to match here; .++ eats "a><b>" and won't give back the closing >, so the trailing > has nothing to match. A working possessive analogue is <[^>]++> → matches "<a>".
 ```
 
 Lazy is the usual fix for "match the smallest HTML tag." Possessive is the usual fix for performance/ReDoS when you know backtracking is unnecessary.
@@ -377,7 +377,7 @@ Pattern dup = Pattern.compile("\\b(\\w+)\\s+\\1\\b");
 // finds doubled words like "the the"
 ```
 
-Backreferences are what push regex **beyond regular languages** — `(a+)\1` (an even-length run that's two equal halves) is not a regular language, and is why backreference matching can't be done by a pure DFA. They're powerful for finding duplicates or matched delimiters but contribute to backtracking cost.
+Backreferences are what push regex **beyond regular languages** — `(.+)\1` matches the **copy language** `{ww | w ∈ Σ*}` (any string followed by an exact copy of itself), which is not regular (in fact not even context-free), and is why backreference matching can't be done by a pure DFA. (Note this needs an alphabet of ≥ 2 symbols: the unary `(a+)\1` collapses to `(aa)+`, which *is* regular.) They're powerful for finding duplicates or matched delimiters but contribute to backtracking cost.
 
 ### Q23. [Theory] What are named capturing groups, and how do you use them in Java?
 

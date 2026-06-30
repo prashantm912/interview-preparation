@@ -2,7 +2,7 @@
 
 [← Back to master index](../README.md)
 
-Web application security is the practice of protecting applications from threats that arise from untrusted input, weak authentication, misconfiguration, and supply-chain risk. The OWASP Top 10 is the de-facto industry checklist of the most critical web risks, and interviewers use it to probe whether you understand *why* vulnerabilities exist and *how* to defend against them at the code, framework, and architecture levels. This guide covers the OWASP Top 10 (2021 with 2025 updates) plus XSS, CSRF, security headers, output encoding, and secrets management, with Java-centric examples.
+Web application security is the practice of protecting applications from threats that arise from untrusted input, weak authentication, misconfiguration, and supply-chain risk. The OWASP Top 10 is the de-facto industry checklist of the most critical web risks, and interviewers use it to probe whether you understand *why* vulnerabilities exist and *how* to defend against them at the code, framework, and architecture levels. This guide covers the OWASP Top 10 (2021 and 2025 editions) plus XSS, CSRF, security headers, output encoding, and secrets management, with Java-centric examples.
 
 ## 🟢 Basic (0–2 yrs)
 
@@ -16,7 +16,7 @@ It matters because:
 - It is referenced by compliance frameworks (PCI-DSS, SOC 2, ISO 27001) and many secure-coding standards.
 - It shifts focus from individual bugs to **categories of weakness**, helping teams build systemic defenses.
 
-The current (2021) categories, with 2025 refinements, are:
+The 2021 edition categories (the baseline still widely referenced) are:
 
 ```
 A01 Broken Access Control
@@ -31,7 +31,22 @@ A09 Security Logging & Monitoring Failures
 A10 Server-Side Request Forgery (SSRF)
 ```
 
-The 2025 revision keeps the structure but emphasizes supply-chain integrity (A08) and folds SSRF more tightly into a broader "request forgery" view. The Top 10 is an *awareness* tool, not an exhaustive checklist — passing it is necessary, not sufficient.
+The **OWASP Top 10:2025** materially restructured this list rather than keeping it intact:
+
+```
+A01 Broken Access Control
+A02 Security Misconfiguration            (up from A05)
+A03 Software Supply Chain Failures       (NEW — broadens 2021's A06 Vulnerable & Outdated Components)
+A04 Cryptographic Failures
+A05 Injection                            (down from A03)
+A06 Insecure Design
+A07 Authentication Failures
+A08 Software or Data Integrity Failures
+A09 Security Logging and Alerting Failures
+A10 Mishandling of Exceptional Conditions (NEW)
+```
+
+Key 2025 changes: Security Misconfiguration rose to A02; a dedicated **Software Supply Chain Failures** category (A03) was added; a new **Mishandling of Exceptional Conditions** category (A10) was introduced; and 2021's standalone **SSRF** was consolidated into **A01 Broken Access Control** rather than kept as its own entry. The Top 10 is an *awareness* tool, not an exhaustive checklist — passing it is necessary, not sufficient.
 
 ### Q2. [Theory] What is injection, and what is the most common example?
 

@@ -1321,7 +1321,7 @@ Branching to an EXC_RETURN value (e.g. `BX LR` at the end of the handler) trigge
 
 #### Q69. [Theory] Explain FPU lazy stacking on Cortex-M4F and the bug it can hide.
 
-The Cortex-M4F FPU has 32 single-precision registers (S0–S31). Stacking all of them on every interrupt would add ~17 words and hurt latency for ISRs that never touch the FPU. **Lazy stacking** is the optimization: on exception entry the hardware **reserves space** for the FP registers on the stack but does **not actually save them**. It only performs the real save **the first time** the ISR executes an FP instruction.
+The Cortex-M4F FPU has 32 single-precision registers (S0–S31), but the exception mechanism only auto-stacks the caller-saved subset: S0–S15 plus FPSCR, padded to an 18-word **extended stack frame**. (S16–S31 are callee-saved and are never part of the hardware exception frame.) Saving those 18 words on every interrupt would hurt latency for ISRs that never touch the FPU. **Lazy stacking** is the optimization: on exception entry the hardware **reserves** the 18-word space on the stack but does **not actually save the registers**. It only performs the real save **the first time** the ISR executes an FP instruction.
 
 ```
  IRQ entry: reserve 18 words (S0-S15, FPSCR + pad), set LSPACT, DON'T copy
