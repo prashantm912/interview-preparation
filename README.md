@@ -24,6 +24,7 @@ This guide is built to be your **primary interview-prep resource for 6–12 mont
 | Document | What it gives you |
 |---|---|
 | [How to Use This Guide & Study Plan](00-getting-started/how-to-use.md) | Executive summary, navigation, and 12-week / 6-month study plans |
+| [Complete Interview Roadmap (Almanac)](00-getting-started/complete-interview-roadmap.md) | Single-file roadmap synthesized from field-tested engineering threads — phases 0–6, the 25-day system-design deep-dive, DSA patterns, and a 12-week plan (companion to the HTML edition) |
 | [Interview Tips by Experience Level](00-getting-started/interview-tips-by-level.md) | What interviewers expect at each level, answer frameworks, common mistakes, demonstrating leadership |
 | [Study Resources & Recommendations](00-getting-started/study-resources.md) | Curated books, courses, and practice platforms by topic |
 | [8-Week Interview Sprint Schedule](00-getting-started/study-schedule.md) | A concrete day-by-day 8-week plan — a worked instance of the study plans (60% system design, plus AI/ML & behavioral) |
