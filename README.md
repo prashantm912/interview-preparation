@@ -5,6 +5,8 @@
 
 ---
 
+> 🌐 **Read this online:** [prashantm912.github.io/interview-preparation](https://prashantm912.github.io/interview-preparation/) — the same content as a searchable site with navigation and dark mode. Build it locally with `python tools/build_site.py` (requires `pip install mkdocs-material`).
+
 ## 📊 At a Glance
 
 | Metric | Count |
